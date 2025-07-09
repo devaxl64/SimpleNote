@@ -29,84 +29,119 @@
         private void InitializeComponent()
         {
             panel1 = new Panel();
+            dgvLevels = new DataGridView();
             button1 = new Button();
-            dataGridView1 = new DataGridView();
-            ClnID = new DataGridViewTextBoxColumn();
-            ClnColor = new DataGridViewTextBoxColumn();
-            ClnTitle = new DataGridViewTextBoxColumn();
-            ClnDate = new DataGridViewTextBoxColumn();
-            ClnText = new DataGridViewTextBoxColumn();
+            dgvNotes = new DataGridView();
+            clnIdNote = new DataGridViewTextBoxColumn();
+            clnColorNote = new DataGridViewTextBoxColumn();
+            clnTitleNote = new DataGridViewTextBoxColumn();
+            clnDateNote = new DataGridViewTextBoxColumn();
+            clnTextNote = new DataGridViewTextBoxColumn();
+            clnIdLevel = new DataGridViewTextBoxColumn();
+            clnNameLevel = new DataGridViewTextBoxColumn();
+            clnAkaLevel = new DataGridViewTextBoxColumn();
             panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgvLevels).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgvNotes).BeginInit();
             SuspendLayout();
             // 
             // panel1
             // 
             panel1.Controls.Add(button1);
-            panel1.Controls.Add(dataGridView1);
+            panel1.Controls.Add(dgvNotes);
+            panel1.Controls.Add(dgvLevels);
             panel1.Location = new Point(12, 12);
             panel1.Name = "panel1";
             panel1.Size = new Size(359, 273);
             panel1.TabIndex = 0;
             // 
+            // dgvLevels
+            // 
+            dgvLevels.AllowUserToAddRows = false;
+            dgvLevels.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvLevels.Columns.AddRange(new DataGridViewColumn[] { clnIdLevel, clnNameLevel, clnAkaLevel });
+            dgvLevels.Location = new Point(0, 0);
+            dgvLevels.Name = "dgvLevels";
+            dgvLevels.RowHeadersVisible = false;
+            dgvLevels.Size = new Size(359, 273);
+            dgvLevels.TabIndex = 3;
+            // 
             // button1
             // 
-            button1.Location = new Point(142, 214);
+            button1.Location = new Point(142, 204);
             button1.Name = "button1";
             button1.Size = new Size(75, 69);
             button1.TabIndex = 1;
             button1.Text = "button1";
             button1.UseVisualStyleBackColor = true;
             // 
-            // dataGridView1
+            // dgvNotes
             // 
-            dataGridView1.AllowUserToAddRows = false;
-            dataGridView1.AllowUserToDeleteRows = false;
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { ClnID, ClnColor, ClnTitle, ClnDate, ClnText });
-            dataGridView1.Location = new Point(0, 10);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.ReadOnly = true;
-            dataGridView1.RowHeadersVisible = false;
-            dataGridView1.Size = new Size(359, 273);
-            dataGridView1.TabIndex = 0;
+            dgvNotes.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvNotes.Columns.AddRange(new DataGridViewColumn[] { clnIdNote, clnColorNote, clnTitleNote, clnDateNote, clnTextNote });
+            dgvNotes.Location = new Point(0, 0);
+            dgvNotes.Name = "dgvNotes";
+            dgvNotes.RowHeadersVisible = false;
+            dgvNotes.Size = new Size(359, 273);
+            dgvNotes.TabIndex = 2;
             // 
-            // ClnID
+            // clnIdNote
             // 
-            ClnID.HeaderText = "ID";
-            ClnID.MinimumWidth = 15;
-            ClnID.Name = "ClnID";
-            ClnID.ReadOnly = true;
-            ClnID.Visible = false;
-            ClnID.Width = 25;
+            clnIdNote.HeaderText = "ID";
+            clnIdNote.Name = "clnIdNote";
+            clnIdNote.ReadOnly = true;
+            clnIdNote.Visible = false;
+            clnIdNote.Width = 25;
             // 
-            // ClnColor
+            // clnColorNote
             // 
-            ClnColor.HeaderText = "Color";
-            ClnColor.Name = "ClnColor";
-            ClnColor.ReadOnly = true;
-            ClnColor.Width = 45;
+            clnColorNote.HeaderText = "Color";
+            clnColorNote.Name = "clnColorNote";
+            clnColorNote.ReadOnly = true;
+            clnColorNote.Visible = false;
+            clnColorNote.Width = 45;
             // 
-            // ClnTitle
+            // clnTitleNote
             // 
-            ClnTitle.HeaderText = "Title";
-            ClnTitle.Name = "ClnTitle";
-            ClnTitle.ReadOnly = true;
-            ClnTitle.Width = 250;
+            clnTitleNote.HeaderText = "Title";
+            clnTitleNote.Name = "clnTitleNote";
+            clnTitleNote.ReadOnly = true;
+            clnTitleNote.Width = 290;
             // 
-            // ClnDate
+            // clnDateNote
             // 
-            ClnDate.HeaderText = "Date";
-            ClnDate.Name = "ClnDate";
-            ClnDate.ReadOnly = true;
-            ClnDate.Width = 61;
+            clnDateNote.HeaderText = "Date";
+            clnDateNote.Name = "clnDateNote";
+            clnDateNote.ReadOnly = true;
+            clnDateNote.Width = 66;
             // 
-            // ClnText
+            // clnTextNote
             // 
-            ClnText.HeaderText = "Text";
-            ClnText.Name = "ClnText";
-            ClnText.ReadOnly = true;
-            ClnText.Visible = false;
+            clnTextNote.HeaderText = "Text";
+            clnTextNote.Name = "clnTextNote";
+            clnTextNote.ReadOnly = true;
+            clnTextNote.Visible = false;
+            // 
+            // clnIdLevel
+            // 
+            clnIdLevel.HeaderText = "ID";
+            clnIdLevel.Name = "clnIdLevel";
+            clnIdLevel.ReadOnly = true;
+            clnIdLevel.Width = 45;
+            // 
+            // clnNameLevel
+            // 
+            clnNameLevel.HeaderText = "Nome";
+            clnNameLevel.Name = "clnNameLevel";
+            clnNameLevel.ReadOnly = true;
+            clnNameLevel.Width = 245;
+            // 
+            // clnAkaLevel
+            // 
+            clnAkaLevel.HeaderText = "Sigla";
+            clnAkaLevel.Name = "clnAkaLevel";
+            clnAkaLevel.ReadOnly = true;
+            clnAkaLevel.Width = 66;
             // 
             // FrmMain
             // 
@@ -118,19 +153,29 @@
             Text = "Form1";
             Load += FrmMain_Load;
             panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgvLevels).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgvNotes).EndInit();
             ResumeLayout(false);
         }
 
         #endregion
 
         private Panel panel1;
-        private DataGridView dataGridView1;
         private Button button1;
-        private DataGridViewTextBoxColumn ClnID;
-        private DataGridViewTextBoxColumn ClnColor;
-        private DataGridViewTextBoxColumn ClnTitle;
-        private DataGridViewTextBoxColumn ClnDate;
-        private DataGridViewTextBoxColumn ClnText;
+        private DataGridView dgvNotes;
+        private DataGridViewTextBoxColumn clnId;
+        private DataGridViewTextBoxColumn clnColor;
+        private DataGridViewTextBoxColumn clnTitle;
+        private DataGridViewTextBoxColumn clnDate;
+        private DataGridViewTextBoxColumn clnText;
+        private DataGridView dgvLevels;
+        private DataGridViewTextBoxColumn clnIdNote;
+        private DataGridViewTextBoxColumn clnColorNote;
+        private DataGridViewTextBoxColumn clnTitleNote;
+        private DataGridViewTextBoxColumn clnDateNote;
+        private DataGridViewTextBoxColumn clnTextNote;
+        private DataGridViewTextBoxColumn clnIdLevel;
+        private DataGridViewTextBoxColumn clnNameLevel;
+        private DataGridViewTextBoxColumn clnAkaLevel;
     }
 }

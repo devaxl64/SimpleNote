@@ -35,3 +35,4 @@ C:\Users\Administrador\Documents\GitHub\SimpleNote\SimpleNoteDesk\obj\Debug\net8
 C:\Users\Administrador\Documents\GitHub\SimpleNote\SimpleNoteDesk\obj\Debug\net8.0-windows\SimpleNoteDesk.genruntimeconfig.cache
 C:\Users\Administrador\Documents\GitHub\SimpleNote\SimpleNoteDesk\obj\Debug\net8.0-windows\ref\SimpleNoteDesk.dll
 C:\Users\Administrador\Documents\GitHub\SimpleNote\SimpleNoteDesk\obj\Debug\net8.0-windows\SimpleNoteDesk.FrmLogin.resources
+C:\Users\Administrador\Documents\GitHub\SimpleNote\SimpleNoteDesk\obj\Debug\net8.0-windows\SimpleNoteDesk.sourcelink.json

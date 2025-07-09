@@ -93,6 +93,7 @@ namespace SimpleNoteDesk
             Controls.Add(BtnLogin);
             Name = "FrmLogin";
             Text = "FrmLogin";
+            Load += FrmLogin_Load;
             ResumeLayout(false);
             PerformLayout();
         }

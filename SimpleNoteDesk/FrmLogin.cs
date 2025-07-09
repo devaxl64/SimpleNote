@@ -28,5 +28,10 @@ namespace SimpleNoteDesk
             cmd.CommandText = $"SELECT * FROM users WHERE email = '{email}' and senha = md5('{password}');";
             MessageBox.Show($"E-mail: {email} e Senha: {password}");
         }
+
+        private void FrmLogin_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

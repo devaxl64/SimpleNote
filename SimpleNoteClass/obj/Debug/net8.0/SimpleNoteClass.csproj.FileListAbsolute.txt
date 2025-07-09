@@ -10,3 +10,4 @@ C:\Users\Administrador\Documents\GitHub\SimpleNote\SimpleNoteClass\obj\Debug\net
 C:\Users\Administrador\Documents\GitHub\SimpleNote\SimpleNoteClass\obj\Debug\net8.0\refint\SimpleNoteClass.dll
 C:\Users\Administrador\Documents\GitHub\SimpleNote\SimpleNoteClass\obj\Debug\net8.0\SimpleNoteClass.pdb
 C:\Users\Administrador\Documents\GitHub\SimpleNote\SimpleNoteClass\obj\Debug\net8.0\ref\SimpleNoteClass.dll
+C:\Users\Administrador\Documents\GitHub\SimpleNote\SimpleNoteClass\obj\Debug\net8.0\SimpleNoteClass.sourcelink.json
