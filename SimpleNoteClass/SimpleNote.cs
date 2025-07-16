@@ -9,11 +9,11 @@ namespace SimpleNoteClass
     public class SimpleNote
     {
         public int Id { get; set; }
+        public User? User { get; set; }
+        public NoteColor? Color { get; set; }
         public string? Title { get; set; }
         public string? Textt { get; set; }
         public DateTime Datte { get; set; }
-        public User? User { get; set; }
-        public NoteColor? Color { get; set; }
         public bool Archived { get; set; }
         public bool Deleted { get; set; }
         public SimpleNote()
@@ -29,14 +29,14 @@ namespace SimpleNoteClass
             User = user;
             Color = color;
         }
-        public SimpleNote(int id, string? title, string? textt, DateTime datte, User? user, NoteColor? color, bool archived, bool deleted)
+        public SimpleNote(int id, User? user, NoteColor? color, string? title, string? textt, DateTime datte, bool archived, bool deleted)
         {
             Id = id;
+            User = user;
+            Color = color;
             Title = title;
             Textt = textt;
             Datte = datte;
-            User = user;
-            Color = color;
             Archived = archived;
             Deleted = deleted;
         }
@@ -49,7 +49,6 @@ namespace SimpleNoteClass
             cmd.Parameters.AddWithValue("spfk_idcolor", Color.Id);
             cmd.Parameters.AddWithValue("sptitle", Title);
             cmd.Parameters.AddWithValue("sptextt", Textt);
-            Id = Convert.ToInt32(cmd.ExecuteScalar());
         }
         public static SimpleNote GetById(int id)
         {
@@ -62,11 +61,11 @@ namespace SimpleNoteClass
             {
                 note = new SimpleNote(
                     reader.GetInt32(0), // Id
-                    reader.GetString(1), // Title
-                    reader.GetString(2), // Textt
-                    reader.GetDateTime(3), // Datte
-                    User.GetById(reader.GetInt32(4)), // User
-                    NoteColor.GetById(reader.GetInt32(5)), // Color
+                    User.GetById(reader.GetInt32(1)), // User
+                    NoteColor.GetById(reader.GetInt32(2)), // Color
+                    reader.GetString(3), // Title
+                    reader.GetString(4), // Textt
+                    reader.GetDateTime(5), // Datte
                     reader.GetBoolean(6), // Archived
                     reader.GetBoolean(7) // Deleted
                 );
@@ -86,11 +85,11 @@ namespace SimpleNoteClass
             {
                 notes.Add(new SimpleNote(
                     reader.GetInt32(0), // Id
-                    reader.GetString(1), // Title
-                    reader.GetString(2), // Textt
-                    reader.GetDateTime(3), // Datte
-                    User.GetById(reader.GetInt32(4)), // User
-                    NoteColor.GetById(reader.GetInt32(5)), // Color
+                    User.GetById(reader.GetInt32(1)), // User
+                    NoteColor.GetById(reader.GetInt32(2)), // Color
+                    reader.GetString(3), // Title
+                    reader.GetString(4), // Textt
+                    reader.GetDateTime(5), // Datte
                     reader.GetBoolean(6), // Archived
                     reader.GetBoolean(7)) // Deleted
                 );

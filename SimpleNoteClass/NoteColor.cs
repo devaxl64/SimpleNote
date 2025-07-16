@@ -47,7 +47,7 @@ namespace SimpleNoteClass
             var color = new NoteColor();
             var cmd = Db.OpenDb();
             cmd.CommandType = System.Data.CommandType.Text;
-            cmd.CommandText = $"SELECT * FORM simplenote.colors WHERE id = {id});";
+            cmd.CommandText = $"SELECT * FROM simplenote.colors WHERE id = {id};";
             var reader = cmd.ExecuteReader();
             if (reader.Read())
             {

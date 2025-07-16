@@ -19,16 +19,6 @@ namespace SimpleNoteDesk
             InitializeComponent();
         }
 
-        private void BtnLogin_Click(string email, string password, object sender, EventArgs e)
-        {
-            email = TxtEmail.Text;
-            password = TxtPass.Text;
-            var cmd = Db.OpenDb();
-            cmd.CommandType = CommandType.Text;
-            cmd.CommandText = $"SELECT * FROM users WHERE email = '{email}' and senha = md5('{password}');";
-            MessageBox.Show($"E-mail: {email} e Senha: {password}");
-        }
-
         private void FrmLogin_Load(object sender, EventArgs e)
         {
 

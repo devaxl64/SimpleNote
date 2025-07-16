@@ -9,35 +9,27 @@ namespace SimpleNoteClass
     public class User
     {
         public int Id { get; set; }
+        public Level? Level { get; set; }
         public string? Name { get; set; }
         public string? LastName { get; set; }
         public string? Email { get; set; }
         public string? Password { get; set; }
-        public Level? Level { get; set; }
         public bool Enable { get; set; }
         public User()
         {
             Level = new Level();
         }
-        public User(int id, string name, string lastName, string email, string password, Level level, bool enable)
+        public User(int id, Level level, string name, string lastName, string email, string password, bool enable)
         {
             Id = id;
+            Level = level;
             Name = name;
             LastName = lastName;
             Email = email;
             Password = password;
-            Level = level;
             Enable = enable;
         }
 
-        public User(string name, string lastName, string email, string password, Level level)
-        {
-            Name = name;
-            LastName = lastName;
-            Email = email;
-            Password = password;
-            Level = level;
-        }
         public User(string name, string email, string password, Level level)
         {
             Name = name;
@@ -57,22 +49,22 @@ namespace SimpleNoteClass
             Id = id;
             Password = password;
         }
-        public static User Login(string email,string password)
+        public static User Login(string email, string password)
         {
             User user = new User();
             var cmd = Db.OpenDb();
             cmd.CommandType = System.Data.CommandType.Text;
-            cmd.CommandText = $"SELECT * FROM users WHERE email = '{email}' and password = md5('{password}');";
+            cmd.CommandText = $"SELECT * FROM users WHERE email = '{email}' AND password = md5('{password}');";
             var reader = cmd.ExecuteReader();
             if (reader.Read())
             {
                 user = new User(
                         reader.GetInt32(0), // Id
-                        reader.GetString(1), // Name
-                        reader.GetString(2), // LastName
-                        reader.GetString(3), // Email
-                        reader.GetString(4), // Password
-                        Level.GetById(reader.GetInt32(5)), // Level
+                        Level.GetById(reader.GetInt32(1)), // Level
+                        reader.GetString(2), // Name
+                        reader.GetString(3), // LastName
+                        reader.GetString(4), // Email
+                        reader.GetString(5), // Password
                         reader.GetBoolean(6) // Enable
                     );
             }
@@ -104,11 +96,11 @@ namespace SimpleNoteClass
             {
                 user = new User(
                     reader.GetInt32(0), // Id
-                    reader.GetString(1), // Name
-                    reader.GetString(2), // LastName
-                    reader.GetString(3), // Email
-                    reader.GetString(4), // Password
-                    Level.GetById(reader.GetInt32(5)), // Level
+                    Level.GetById(reader.GetInt32(1)), // Level
+                    reader.GetString(2), // Name
+                    reader.GetString(3), // LastName
+                    reader.GetString(4), // Email
+                    reader.GetString(5), // Password
                     reader.GetBoolean(6) // Enable
                 );
             }
@@ -127,11 +119,11 @@ namespace SimpleNoteClass
             {
                 users.Add(new User(
                     reader.GetInt32(0), // Id
-                    reader.GetString(1), // Name
-                    reader.GetString(2), // LastName
-                    reader.GetString(3), // Email
-                    reader.GetString(4), // Password
-                    Level.GetById(reader.GetInt32(5)), // Level
+                    Level.GetById(reader.GetInt32(1)), // Level
+                    reader.GetString(2), // Name
+                    reader.GetString(3), // LastName
+                    reader.GetString(4), // Email
+                    reader.GetString(5), // Password
                     reader.GetBoolean(6) // Enable
                     ));
             }
@@ -151,10 +143,10 @@ namespace SimpleNoteClass
             cmd.CommandType = System.Data.CommandType.StoredProcedure;
             cmd.CommandText = $"sp_user_update";
             cmd.Parameters.AddWithValue("spid", Id);
+            cmd.Parameters.AddWithValue("spidlevel", Level.Id);
             cmd.Parameters.AddWithValue("spname", Name);
             cmd.Parameters.AddWithValue("splastname", LastName);
             cmd.Parameters.AddWithValue("sppassword", Password);
-            cmd.Parameters.AddWithValue("spidlevel", Level.Id);
             if (cmd.ExecuteNonQuery() > 0)
             {
                 updated = true;

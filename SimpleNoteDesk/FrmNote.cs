@@ -39,15 +39,24 @@ namespace SimpleNoteDesk
             note.InsertNote();
             return note;
         }
-        
+        public FrmNote(FrmMain frmMain)
+        {
+            InitializeComponent();
+            _frmMain = frmMain;
+        }
+
         private void FrmNote_FormClosed(object sender, FormClosedEventArgs e)
         {
             SaveNote();
+            this.Close();
+            FrmMain.Show();
         }
 
         private void FrmNote_FormClosing(object sender, FormClosingEventArgs e)
         {
             SaveNote();
+            this.Close();
+            FrmMain.Show();
         }
 
         private void FrmNote_Deactivate(object sender, EventArgs e)

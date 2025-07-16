@@ -45,11 +45,9 @@ namespace SimpleNoteClass
             var reader = cmd.ExecuteReader();
             if (reader.Read())
             {
-                level = new Level(
-                    reader.GetInt32(0), // Id
-                    reader.GetString(1), // Name
-                    reader.GetString(2) // Aka
-                    );
+                level.Id = reader.GetInt32(0); // Id
+                level.Name = reader.GetString(1); // Name
+                level.Aka = reader.GetString(2); // Aka
             }
             reader.Close();
             cmd.Connection.Close();
