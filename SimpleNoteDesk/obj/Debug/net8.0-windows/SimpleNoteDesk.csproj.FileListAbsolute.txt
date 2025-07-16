@@ -36,3 +36,10 @@ C:\Users\Administrador\Documents\GitHub\SimpleNote\SimpleNoteDesk\obj\Debug\net8
 C:\Users\Administrador\Documents\GitHub\SimpleNote\SimpleNoteDesk\obj\Debug\net8.0-windows\ref\SimpleNoteDesk.dll
 C:\Users\Administrador\Documents\GitHub\SimpleNote\SimpleNoteDesk\obj\Debug\net8.0-windows\SimpleNoteDesk.FrmLogin.resources
 C:\Users\Administrador\Documents\GitHub\SimpleNote\SimpleNoteDesk\obj\Debug\net8.0-windows\SimpleNoteDesk.sourcelink.json
+C:\Users\Administrador\Documents\GitHub\SimpleNote\SimpleNoteDesk\obj\Debug\net8.0-windows\SimpleNoteDesk.FrmLevel.resources
+C:\Users\Administrador\Documents\GitHub\SimpleNote\SimpleNoteDesk\obj\Debug\net8.0-windows\SimpleNoteDesk.FrmNote.resources
+C:\Users\Administrador\Documents\GitHub\SimpleNote\SimpleNoteDesk\bin\Debug\net8.0-windows\Aspose.PDF.dll
+C:\Users\Administrador\Documents\GitHub\SimpleNote\SimpleNoteDesk\bin\Debug\net8.0-windows\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+C:\Users\Administrador\Documents\GitHub\SimpleNote\SimpleNoteDesk\bin\Debug\net8.0-windows\Microsoft.Extensions.DependencyModel.dll
+C:\Users\Administrador\Documents\GitHub\SimpleNote\SimpleNoteDesk\bin\Debug\net8.0-windows\Microsoft.Extensions.Logging.Abstractions.dll
+C:\Users\Administrador\Documents\GitHub\SimpleNote\SimpleNoteDesk\bin\Debug\net8.0-windows\Newtonsoft.Json.dll

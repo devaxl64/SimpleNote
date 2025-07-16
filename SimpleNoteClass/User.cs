@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SimpleNoteClass
 {
-    internal class User
+    public class User
     {
         public int Id { get; set; }
         public string? Name { get; set; }
@@ -14,12 +14,12 @@ namespace SimpleNoteClass
         public string? Email { get; set; }
         public string? Password { get; set; }
         public Level? Level { get; set; }
-        public bool Active { get; set; }
+        public bool Enable { get; set; }
         public User()
         {
             Level = new Level();
         }
-        public User(int id, string name, string lastName, string email, string password, Level level, bool active)
+        public User(int id, string name, string lastName, string email, string password, Level level, bool enable)
         {
             Id = id;
             Name = name;
@@ -27,7 +27,7 @@ namespace SimpleNoteClass
             Email = email;
             Password = password;
             Level = level;
-            Active = active;
+            Enable = enable;
         }
 
         public User(string name, string lastName, string email, string password, Level level)
@@ -57,6 +57,29 @@ namespace SimpleNoteClass
             Id = id;
             Password = password;
         }
+        public static User Login(string email,string password)
+        {
+            User user = new User();
+            var cmd = Db.OpenDb();
+            cmd.CommandType = System.Data.CommandType.Text;
+            cmd.CommandText = $"SELECT * FROM users WHERE email = '{email}' and password = md5('{password}');";
+            var reader = cmd.ExecuteReader();
+            if (reader.Read())
+            {
+                user = new User(
+                        reader.GetInt32(0), // Id
+                        reader.GetString(1), // Name
+                        reader.GetString(2), // LastName
+                        reader.GetString(3), // Email
+                        reader.GetString(4), // Password
+                        Level.GetById(reader.GetInt32(5)), // Level
+                        reader.GetBoolean(6) // Enable
+                    );
+            }
+            reader.Close();
+            cmd.Connection.Close();
+            return user;
+        }
         public void InsertUser()
         {
             var cmd = Db.OpenDb();
@@ -66,11 +89,11 @@ namespace SimpleNoteClass
             cmd.Parameters.AddWithValue("splastname", LastName);
             cmd.Parameters.AddWithValue("spemail", Email);
             cmd.Parameters.AddWithValue("sppassword", Password);
-            cmd.Parameters.AddWithValue("spactive", Active);
+            cmd.Parameters.AddWithValue("spenable", Enable);
             cmd.Parameters.AddWithValue("spidlevel", Level.Id);
             Id = Convert.ToInt32(cmd.ExecuteScalar());
         }
-        public static User GetWithId(int id)
+        public static User GetById(int id)
         {
             User user = new User();
             var cmd = Db.OpenDb();
@@ -85,8 +108,8 @@ namespace SimpleNoteClass
                     reader.GetString(2), // LastName
                     reader.GetString(3), // Email
                     reader.GetString(4), // Password
-                    Level.GetWithId(reader.GetInt32(5)), // Level
-                    reader.GetBoolean(6) // Active
+                    Level.GetById(reader.GetInt32(5)), // Level
+                    reader.GetBoolean(6) // Enable
                 );
             }
             reader.Close();
@@ -108,8 +131,8 @@ namespace SimpleNoteClass
                     reader.GetString(2), // LastName
                     reader.GetString(3), // Email
                     reader.GetString(4), // Password
-                    Level.GetWithId(reader.GetInt32(5)), // Level
-                    reader.GetBoolean(6) // Active
+                    Level.GetById(reader.GetInt32(5)), // Level
+                    reader.GetBoolean(6) // Enable
                     ));
             }
             reader.Close();

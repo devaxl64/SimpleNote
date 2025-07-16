@@ -38,16 +38,17 @@ namespace SimpleNoteDesk
             // 
             // BtnLogin
             // 
-            BtnLogin.Location = new Point(159, 166);
+            BtnLogin.Location = new Point(147, 270);
             BtnLogin.Name = "BtnLogin";
-            BtnLogin.Size = new Size(75, 23);
+            BtnLogin.Size = new Size(75, 50);
             BtnLogin.TabIndex = 0;
             BtnLogin.Text = "Login";
             BtnLogin.UseVisualStyleBackColor = true;
+            BtnLogin.Click += BtnLogin_Click;
             // 
             // TxtEmail
             // 
-            TxtEmail.Location = new Point(76, 57);
+            TxtEmail.Location = new Point(63, 101);
             TxtEmail.Name = "TxtEmail";
             TxtEmail.Size = new Size(242, 23);
             TxtEmail.TabIndex = 1;
@@ -55,7 +56,7 @@ namespace SimpleNoteDesk
             // 
             // TxtPass
             // 
-            TxtPass.Location = new Point(76, 126);
+            TxtPass.Location = new Point(63, 218);
             TxtPass.Name = "TxtPass";
             TxtPass.Size = new Size(242, 23);
             TxtPass.TabIndex = 2;
@@ -65,18 +66,20 @@ namespace SimpleNoteDesk
             // LbEmail
             // 
             LbEmail.AutoSize = true;
-            LbEmail.Location = new Point(83, 34);
+            LbEmail.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            LbEmail.Location = new Point(63, 68);
             LbEmail.Name = "LbEmail";
-            LbEmail.Size = new Size(41, 15);
+            LbEmail.Size = new Size(66, 25);
             LbEmail.TabIndex = 3;
             LbEmail.Text = "E-mail";
             // 
             // LbPass
             // 
             LbPass.AutoSize = true;
-            LbPass.Location = new Point(83, 108);
+            LbPass.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            LbPass.Location = new Point(64, 185);
             LbPass.Name = "LbPass";
-            LbPass.Size = new Size(39, 15);
+            LbPass.Size = new Size(64, 25);
             LbPass.TabIndex = 4;
             LbPass.Text = "Senha";
             // 
@@ -85,14 +88,14 @@ namespace SimpleNoteDesk
             AcceptButton = BtnLogin;
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(380, 216);
+            ClientSize = new Size(384, 361);
             Controls.Add(LbPass);
             Controls.Add(LbEmail);
             Controls.Add(TxtPass);
             Controls.Add(TxtEmail);
             Controls.Add(BtnLogin);
             Name = "FrmLogin";
-            Text = "FrmLogin";
+            Text = "Tela de Login";
             Load += FrmLogin_Load;
             ResumeLayout(false);
             PerformLayout();

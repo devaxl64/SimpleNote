@@ -36,7 +36,7 @@ namespace SimpleNoteClass
             cmd.Parameters.AddWithValue("spaka", Aka);
             Id = Convert.ToInt32(cmd.ExecuteScalar());
         }
-        public static Level GetWithId(int id)
+        public static Level GetById(int id)
         {
             var level = new Level();
             var cmd = Db.OpenDb();

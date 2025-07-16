@@ -11,36 +11,29 @@ namespace SimpleNoteDesk
 
         private void FrmMain_Load(object sender, EventArgs e)
         {
-            //LoadGridNotes();
-            LoadGridLevels();
+            FrmLogin frmLogin = new FrmLogin();
+            this.Hide();
+            frmLogin.ShowDialog();
             this.dgvNotes.Hide();
-            //FrmLogin frmLogin = new FrmLogin();
-            //this.Hide();
-            //frmLogin.ShowDialog();
-            ////if (Program.UsuarioLogado.Id > 0)
-            ////{
-            ////    tsslUsuarioLogado.Text = $"{Program.UsuarioLogado.Nome} - {Program.UsuarioLogado.Nivel.Nome}";
-            ////}
-            //this.Show();
+            if (Program.LoggedUser.Id > 0)
+            {
+                var loggedUser = Program.LoggedUser;
+                this.Text = $"{loggedUser.Name} - {loggedUser.Level.Name}";
+            }
+            this.Show();
+            LoadGridNotes();
         }
+
         private void LoadGridNotes()
         {
-            //var notes = Note.GetList();
+            var notes = SimpleNote.GetList();
         }
-        private void LoadGridLevels()
-        {
-            var levels = Level.GetList();
-            int line = 0;
-            //dgvLevels.Rows.Clear();
-            foreach (var level in levels)
-            {
-                dgvLevels.Rows.Add();
-                dgvLevels.Rows[line].Cells[0].Value = level.Id; // clnIdLevel
-                dgvLevels.Rows[line].Cells[1].Value = level.Name; // clnNameLevel
-                dgvLevels.Rows[line].Cells[2].Value = level.Aka; // clnAkaLevel
-                line++;
-            }
 
+        private void btnNewNote_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            FrmNote frmNote = new FrmNote();
+            frmNote.ShowDialog();
         }
     }
 }

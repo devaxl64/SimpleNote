@@ -4,7 +4,7 @@ namespace SimpleNoteDesk
 {
     internal static class Program
     {
-        //public static User LoggedUser { get; set; } = new User();
+        public static User LoggedUser { get; set; } = new User();
         /// <summary>
         ///  The main entry point for the application.
         /// </summary>

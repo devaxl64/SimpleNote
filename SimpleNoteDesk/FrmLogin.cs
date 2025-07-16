@@ -33,5 +33,13 @@ namespace SimpleNoteDesk
         {
 
         }
+
+        private void BtnLogin_Click(object sender, EventArgs e)
+        {
+            //Program.LoggedUser = User.Login(TxtEmail.Text, TxtPass.Text);
+            
+            Program.LoggedUser = User.Login(TxtEmail.Text, TxtPass.Text);
+            this.Close();
+        }
     }
 }

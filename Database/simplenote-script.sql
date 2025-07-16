@@ -23,7 +23,7 @@ name VARCHAR(14) NOT NULL,
 lastname VARCHAR(14),
 email VARCHAR(60),
 password VARCHAR(32) NOT NULL,
-active BIT(1) NOT NULL DEFAULT 1,
+enable BIT(1) NOT NULL DEFAULT 1,
 PRIMARY KEY(id),
 FOREIGN KEY(fk_idlevel) REFERENCES simplenote.levels(id),
 UNIQUE(email)
@@ -36,7 +36,7 @@ CREATE TABLE IF NOT EXISTS simplenote.colors (
 id INT NOT NULL AUTO_INCREMENT,
 typecolor int(2) NOT NULL, -- Tipo de cor, para o usuário poder personalizar a cor. (ou não, dá mais trabalho)
 weight INT(2) NOT NULL, -- Peso, para o usuário poder filtrar a ordem das notas
-active BIT(1) DEFAULT 1, -- para o usuário poder filtrar a quantidade de cores de notas disponívieis.
+enable BIT(1) DEFAULT 1, -- para o usuário poder filtrar a quantidade de cores de notas disponívieis.
 PRIMARY KEY(id)
 );
 
@@ -45,7 +45,7 @@ CREATE TABLE IF NOT EXISTS simplenote.notes (
 id INT NOT NULL AUTO_INCREMENT,
 fk_iduser INT NOT NULL,
 fk_idcolor INT NOT NULL,
-tilte VARCHAR(40) NOT NULL,
+title VARCHAR(40) NOT NULL,
 textt TEXT NOT NULL, -- TEXT: até 65.535 caracteres (64KB) / TINYTEXT: até 255 caracteres.
 datte TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP(),
 archived BIT(1) NOT NULL DEFAULT 0,
@@ -58,7 +58,8 @@ FOREIGN KEY (fk_idcolor) REFERENCES simplenote.colors(id)
 -----------------------
 -- POPULNADO TABELAS --
 -----------------------
-INSERT INTO simplenote.colors (name) VALUES ('Yellow');
+
+INSERT INTO simplenote.colors (typecolor, weight) VALUES (1, 1);
 
 INSERT INTO simplenote.levels (name, aka) VALUES ('Administrador', 'ADM');
 
@@ -69,6 +70,9 @@ VALUES (1, 'Marcell', 'marcell@email.com', md5('1234')
 INSERT INTO simplenote.users (fk_idlevel, name, lastname, email, password)
 VALUES (1, 'Elayne', '', 'elayne@email.com', md5('1234')
 );
+
+INSERT INTO simplenote.notes (fk_iduser, fk_idcolor, title, textt) 
+VALUES (1, 1, 'titulo', 'texto');
 
 
 ----------------
@@ -116,9 +120,9 @@ spemail VARCHAR(60),
 sppassword VARCHAR(32)
 )
 BEGIN
-INSERT INTO users (name, lastname, email, password)
+INSERT INTO simplenote.users (name, lastname, email, password)
 VALUES (spname, splastname, spemail, sppassword);
-SELECT * FROM users WHERE id = LAST_INSERT_ID();
+SELECT * FROM simplenote.users WHERE id = LAST_INSERT_ID();
 END $$
 DELIMITER ;
 
@@ -131,9 +135,9 @@ splastname VARCHAR(14),
 sppassword VARCHAR(32)
 )
 BEGIN
-UPDATE users SET name = spname, lastname = spastname, password = sppassword WHERE id = spid;
-SELECT * FROM users WHERE id = LAST_INSERT_ID();
-END$$
+UPDATE simplenote.users SET name = spname, lastname = spastname, password = sppassword WHERE id = spid;
+SELECT * FROM simplenote.users WHERE id = LAST_INSERT_ID();
+END $$
 DELIMITER ;
 
 
@@ -146,8 +150,8 @@ splastname VARCHAR(14)
 )
 BEGIN
 UPDATE users SET name = spname, lastname = spastname WHERE id = spid;
-SELECT * FROM users WHERE id = LAST_INSERT_ID();
-END$$
+SELECT * FROM simplenote.users WHERE id = LAST_INSERT_ID();
+END $$
 DELIMITER ;
 
 
@@ -158,9 +162,9 @@ spid INT,
 sppassword VARCHAR(32)
 )
 BEGIN
-UPDATE users SET password = sppassword WHERE id = spid;
-SELECT * FROM users WHERE id = LAST_INSERT_ID();
-END$$
+UPDATE simplenote.users SET password = sppassword WHERE id = spid;
+SELECT * FROM simplenote.users WHERE id = LAST_INSERT_ID();
+END $$
 DELIMITER ;
 
 ----------------------
@@ -169,7 +173,53 @@ DELIMITER ;
 DELIMITER $$
 USE simplenote $$
 CREATE PROCEDURE sp_color_insert (
+sptypecolor INT,
+spweight INT
+)
+BEGIN
+INSERT INTO simplenote.colors (typecolor, weight)
+VALUES (sptypecolor, spweight);
+SELECT * FROM simplenote.colors WHERE id = LAST_INSERT_ID();
+END $$
+DELIMITER ;
+
+DELIMITER $$
+USE simplenote $$
+CREATE PROCEDURE sp_color_update (
 spid INT,
 sptypecolor INT,
-spweight INT,
+spweight INT
+)
+BEGIN
+UPDATE simplenote.colors SET typecolor = sptypecolor, weight = spweight WHERE id = spid;
+SELECT * FROM simplenote.colors WHERE id = LAST_INSERT_ID();
+END $$
+DELIMITER ;
+
+
+---------------------
+-- procdures notes --
+---------------------
+DELIMITER $$
+USE simplenote $$
+CREATE PROCEDURE sp_note_insert (
+spfk_iduser INT,
+spfk_idcolor INT,
+sptitle VARCHAR(40),
+sptextt TEXT
+)
+BEGIN
+INSERT INTO simplenote.notes (fk_iduser, fk_idcolor, title, textt) 
+VALUES (spfk_iduser, sptitle, sptextt);
+SELECT * FROM simplenote.colors WHERE id = LAST_INSERT_ID();
+END $$
+DELIMITER ;
+
+
+INSERT INTO simplenote.notes (fk_iduser, fk_idcolor, title, textt) 
+VALUES (1, 1, 'title', 'teste 2');
+
+
+
+
 
