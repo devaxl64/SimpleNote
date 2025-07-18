@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SimpleNoteDesk")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+8ac39be23a97b95f6446b7bf59f7cabd323f8c1b")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+937ce91d9bd33316ff67dad99bf09aa1f6d39014")]
 [assembly: System.Reflection.AssemblyProductAttribute("SimpleNoteDesk")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SimpleNoteDesk")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

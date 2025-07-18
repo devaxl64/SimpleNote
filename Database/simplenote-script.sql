@@ -71,9 +71,6 @@ INSERT INTO simplenote.users (fk_idlevel, name, lastname, email, password)
 VALUES (1, 'Elayne', '', 'elayne@email.com', md5('1234')
 );
 
-INSERT INTO simplenote.notes (fk_iduser, fk_idcolor, title, textt) 
-VALUES (1, 1, 'titulo', 'texto');
-
 
 ----------------
 -- PROCEDURES --
@@ -215,9 +212,33 @@ SELECT * FROM simplenote.colors WHERE id = LAST_INSERT_ID();
 END $$
 DELIMITER ;
 
+DELIMITER $$
+USE simplenote $$
+CREATE PROCEDURE sp_note_update (
+spid INT,
+spfk_iduser INT,
+spfk_idcolor INT,
+sptitle VARCHAR(40),
+sptextt TEXT
+)
+BEGIN
+UPDATE simplenote.notes SET spfk_iduser = fk_iduser, spfk_idcolor = fk_idcolor, sptitle = title, sptextt = textt
+WHERE id = spid;
+SELECT * FROM simplenote.colors WHERE id = LAST_INSERT_ID();
+END $$
+DELIMITER ;
+
+
+
+INSERT INTO simplenote.notes (fk_iduser, fk_idcolor, title, textt) 
+VALUES (1, 1, 'titulo', 'texto');
 
 INSERT INTO simplenote.notes (fk_iduser, fk_idcolor, title, textt) 
 VALUES (1, 1, 'title', 'teste 2');
+
+INSERT INTO simplenote.notes (fk_iduser, fk_idcolor, title, textt) 
+VALUES (2, 1, 'title', 'teste 2'); -- User 2
+
 
 
 
