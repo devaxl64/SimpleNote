@@ -1,15 +1,1 @@
-{
-  "ShowEmptyProjects": false,
-  "SelectedGroups": [],
-  "ExpandedProjects": [],
-  "EnableSpellChecker": true,
-  "ColumnOrder": [
-    "name",
-    "type",
-    "neutral-value",
-    "neutral-comment"
-  ],
-  "VisibleColumnKeys": [
-    "name"
-  ]
-}
+{"ShowEmptyProjects":false,"CustomColumnOrderings":{},"ShowValidationErrors":true,"SelectedResourceGroupsByProjectFilePath":{"C:\\Users\\marcell.aecastro\\Documents\\SimpleNote\\SimpleNoteDesk\\SimpleNoteDesk.csproj":["C:\\Users\\marcell.aecastro\\Documents\\SimpleNote\\SimpleNoteDesk\\FrmMain.resx"]},"VisibleColumnKeys":["name"]}

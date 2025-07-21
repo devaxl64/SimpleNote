@@ -53,6 +53,7 @@
             btnRetrun.Text = "←\r\n";
             btnRetrun.TextAlign = ContentAlignment.TopLeft;
             btnRetrun.UseVisualStyleBackColor = false;
+            btnRetrun.Click += btnRetrun_Click;
             // 
             // FrmNote
             // 

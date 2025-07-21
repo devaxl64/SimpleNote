@@ -11,9 +11,6 @@ namespace SimpleNoteDesk
 
         private void FrmMain_Load(object sender, EventArgs e)
         {
-            FrmLogin frmLogin = new FrmLogin();
-            this.Hide();
-            frmLogin.ShowDialog();
             if (Program.LoggedUser.Id > 0)
             {
                 var loggedUser = Program.LoggedUser;
@@ -21,8 +18,17 @@ namespace SimpleNoteDesk
             }
             else
             {
-                MessageBox.Show("Você precisa estar logado para continuar.", "Login Required", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                Application.Exit();
+                if (Program.LoggedUser.Id < 1)
+                {
+                    FrmLogin frmLogin = new FrmLogin();
+                    this.Hide();
+                    frmLogin.ShowDialog();
+                }
+                else
+                {
+                    MessageBox.Show("Você precisa estar logado para continuar.", "Login Required", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    Application.Exit();
+                }
             }
             this.Show();
             LoadGridNotes();
@@ -52,7 +58,8 @@ namespace SimpleNoteDesk
         private void btnNewNote_Click(object sender, EventArgs e)
         {
             FrmNote frmNote = new FrmNote();
-            frmNote.Show();
+            frmNote.ShowDialog();
+            this.Hide();
         }
 
         // Mensagem temporária:
@@ -78,7 +85,14 @@ namespace SimpleNoteDesk
             string textt = dgvNotes.Rows[e.RowIndex].Cells[4].Value.ToString();
             FrmNote frmNote = new FrmNote(textt);
             frmNote.ShowDialog();
-            this.Hide();
+            //if (frmNote = )
+            //{
+                this.Hide();
+            //}
+            //else
+            //{
+            //    this.ShowDialog();
+            //}
         }
     }
 }

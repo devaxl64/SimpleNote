@@ -57,6 +57,7 @@ namespace SimpleNoteDesk
                     Textt = txtNote.Text
                 };
                 note.InsertNote();
+
                 notesaved = true;
                 var frmMain = new FrmMain();
                 frmMain.ShowSave("Salvo", 2000);
@@ -86,6 +87,14 @@ namespace SimpleNoteDesk
         private void FrmNote_Leave(object sender, EventArgs e)
         {
             SaveNote();
+        }
+
+        private void btnRetrun_Click(object sender, EventArgs e)
+        {
+            SaveNote();
+            //var frmMain = new FrmMain();
+            //frmMain.ShowDialog();
+            this.Close();
         }
     }
 }

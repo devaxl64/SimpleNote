@@ -76,6 +76,7 @@
             ControlBox = false;
             Controls.Add(dgvLevels);
             Name = "FrmLevel";
+            StartPosition = FormStartPosition.CenterParent;
             Text = "-";
             Load += FrmLevel_Load;
             ((System.ComponentModel.ISupportInitialize)dgvLevels).EndInit();

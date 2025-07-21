@@ -19,17 +19,30 @@ namespace SimpleNoteDesk
             InitializeComponent();
         }
 
-        private void FrmLogin_Load(object sender, EventArgs e)
-        {
-
-        }
-
         private void BtnLogin_Click(object sender, EventArgs e)
         {
             //Program.LoggedUser = User.Login(TxtEmail.Text, TxtPass.Text);
-            
+            //if (Program.LoggedUser.Id > 0)
+            //{
+            //    Program.LoggedUser = User.Login(TxtEmail.Text, TxtPass.Text);
+            //}
+
+            //Program.LoggedUser = User.Login(TxtEmail.Text, TxtPass.Text);
             Program.LoggedUser = User.Login(TxtEmail.Text, TxtPass.Text);
-            this.Close();
+            if (Program.LoggedUser.Id > 0)
+            {
+                this.Close();
+                //FrmMain frmMain = new FrmMain();
+            }
+            else
+            {
+                MessageBox.Show("Email e/ou senha incorretos \n ou usuário não cadastrado");
+                TxtEmail.Focus();
+                TxtEmail.SelectAll();
+            }
+            //FrmMain frmMain = new FrmMain();
+
+            //this.Close();
         }
     }
 }

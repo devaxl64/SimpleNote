@@ -11,3 +11,16 @@ C:\Users\Administrador\Documents\GitHub\SimpleNote\SimpleNoteClass\obj\Debug\net
 C:\Users\Administrador\Documents\GitHub\SimpleNote\SimpleNoteClass\obj\Debug\net8.0\SimpleNoteClass.pdb
 C:\Users\Administrador\Documents\GitHub\SimpleNote\SimpleNoteClass\obj\Debug\net8.0\ref\SimpleNoteClass.dll
 C:\Users\Administrador\Documents\GitHub\SimpleNote\SimpleNoteClass\obj\Debug\net8.0\SimpleNoteClass.sourcelink.json
+C:\Users\marcell.aecastro\Documents\SimpleNote\SimpleNoteClass\bin\Debug\net8.0\SimpleNoteClass.deps.json
+C:\Users\marcell.aecastro\Documents\SimpleNote\SimpleNoteClass\bin\Debug\net8.0\SimpleNoteClass.dll
+C:\Users\marcell.aecastro\Documents\SimpleNote\SimpleNoteClass\bin\Debug\net8.0\SimpleNoteClass.pdb
+C:\Users\marcell.aecastro\Documents\SimpleNote\SimpleNoteClass\obj\Debug\net8.0\SimpleNoteClass.csproj.AssemblyReference.cache
+C:\Users\marcell.aecastro\Documents\SimpleNote\SimpleNoteClass\obj\Debug\net8.0\SimpleNoteClass.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\marcell.aecastro\Documents\SimpleNote\SimpleNoteClass\obj\Debug\net8.0\SimpleNoteClass.AssemblyInfoInputs.cache
+C:\Users\marcell.aecastro\Documents\SimpleNote\SimpleNoteClass\obj\Debug\net8.0\SimpleNoteClass.AssemblyInfo.cs
+C:\Users\marcell.aecastro\Documents\SimpleNote\SimpleNoteClass\obj\Debug\net8.0\SimpleNoteClass.csproj.CoreCompileInputs.cache
+C:\Users\marcell.aecastro\Documents\SimpleNote\SimpleNoteClass\obj\Debug\net8.0\SimpleNoteClass.sourcelink.json
+C:\Users\marcell.aecastro\Documents\SimpleNote\SimpleNoteClass\obj\Debug\net8.0\SimpleNoteClass.dll
+C:\Users\marcell.aecastro\Documents\SimpleNote\SimpleNoteClass\obj\Debug\net8.0\refint\SimpleNoteClass.dll
+C:\Users\marcell.aecastro\Documents\SimpleNote\SimpleNoteClass\obj\Debug\net8.0\SimpleNoteClass.pdb
+C:\Users\marcell.aecastro\Documents\SimpleNote\SimpleNoteClass\obj\Debug\net8.0\ref\SimpleNoteClass.dll

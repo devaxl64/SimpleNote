@@ -95,8 +95,8 @@ namespace SimpleNoteDesk
             Controls.Add(TxtEmail);
             Controls.Add(BtnLogin);
             Name = "FrmLogin";
+            StartPosition = FormStartPosition.CenterParent;
             Text = "Tela de Login";
-            Load += FrmLogin_Load;
             ResumeLayout(false);
             PerformLayout();
         }

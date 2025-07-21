@@ -159,6 +159,7 @@
             ControlBox = false;
             Controls.Add(panel1);
             Name = "FrmMain";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "-";
             Load += FrmMain_Load;
             panel1.ResumeLayout(false);
