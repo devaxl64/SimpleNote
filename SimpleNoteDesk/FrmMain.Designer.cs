@@ -172,7 +172,7 @@
 
         private Panel panel1;
         private Button btnNewNote;
-        private DataGridView dgvNotes;
+        public DataGridView dgvNotes;
         private DataGridViewTextBoxColumn clnId;
         private DataGridViewTextBoxColumn clnColor;
         private DataGridViewTextBoxColumn clnTitle;

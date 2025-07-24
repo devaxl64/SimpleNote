@@ -11,8 +11,8 @@ namespace SimpleNoteClass
         public int Id { get; set; }
         public User? User { get; set; }
         public NoteColor? Color { get; set; }
-        public string? Title { get; set; }
-        public string? Textt { get; set; }
+        public static string? Title { get; set; }
+        public static string? Textt { get; set; }
         public DateTime Datte { get; set; }
         public bool Archived { get; set; }
         public bool Deleted { get; set; }
@@ -22,12 +22,26 @@ namespace SimpleNoteClass
             Color = new NoteColor();
         }
 
-        public SimpleNote(string title, string textt, User user, NoteColor color)
+        public SimpleNote(int id, User? user, NoteColor? color, string? title, string? textt)
+        {
+            Id = id;
+            User = user;
+            Color = color;
+            Title = title;
+            Textt = textt;
+        }
+
+        public SimpleNote(string title, string textt)
         {
             Title = title;
             Textt = textt;
-            User = user;
+        }
+
+        public SimpleNote(NoteColor? color, string? title, string? textt)
+        {
             Color = color;
+            Title = title;
+            Textt = textt;
         }
         public SimpleNote(int id, User? user, NoteColor? color, string? title, string? textt, DateTime datte, bool archived, bool deleted)
         {
@@ -40,6 +54,7 @@ namespace SimpleNoteClass
             Archived = archived;
             Deleted = deleted;
         }
+
         public void InsertNote()
         {
             var cmd = Db.OpenDb();

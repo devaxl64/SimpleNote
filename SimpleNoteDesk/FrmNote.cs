@@ -7,12 +7,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Aspose.Pdf;
+using Aspose.Pdf.Drawing;
+using Org.BouncyCastle.Utilities;
 using SimpleNoteClass;
 
 namespace SimpleNoteDesk
 {
     public partial class FrmNote : Form
     {
+        public static FrmMain DgvNotes { get; set; } = new FrmMain();
         public FrmNote() // Evento new note
         {
             InitializeComponent();
@@ -43,24 +47,38 @@ namespace SimpleNoteDesk
         public bool SaveNote()
         {
             var notesaved = false;
-            if (string.IsNullOrWhiteSpace(txtNote.Text))
-            {
-                return notesaved;
-            }
-            else
-            {
-                var note = new SimpleNote
-                {
-                    User = Program.LoggedUser,
-                    Color = new NoteColor { Id = 1 }, // Updated to use TypeColor instead of Id
-                    Title = txtNote.Text.Length > 40 ? txtNote.Text.Substring(0, 40) : txtNote.Text,
-                    Textt = txtNote.Text
-                };
-                note.InsertNote();
+            //if (string.IsNullOrWhiteSpace(txtNote.Text))
+            //{
+            //    MessageBox.Show("Não foi possível salvar...", "Erro com o salvamento", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            //    return notesaved;
+            //}
+            //else
+            //{
+            //    var note = new SimpleNote
+            //    {
+            //        User = Program.LoggedUser,
+            //        Color = new NoteColor { Id = 1 }, // Updated to use TypeColor instead of Id
+            //        Title = txtNote.Text.Length > 40 ? txtNote.Text.Substring(0, 40) : txtNote.Text,
+            //        Textt = txtNote.Text
+            //    };
+            //    note.InsertNote();
 
-                notesaved = true;
-                var frmMain = new FrmMain();
-                frmMain.ShowSave("Salvo", 2000);
+            //    notesaved = true;
+            //    var frmMain = new FrmMain();
+            //    frmMain.ShowSave("Salvo", 2000);
+            //}
+
+            if (txtNote.Text == string.Empty)
+            {
+                if (txtNote.Text != string.Empty)
+                {
+                    var frmMain = new FrmMain();
+                    int line = 0;
+                    //var insertNote = new SimpleNote(Program.LoggedUser, var color = new NoteColor { Id = 1 }, txtNote.Text.Length > 40 ? txtNote.Text.Substring(0, 40) : txtNote.Text, txtNote.Text);
+                    SimpleNote insertNote = new SimpleNote(SimpleNote.Id = frmMain.dgvNotes.Rows.Add, SimpleNote.User.Id, SimpleNote.Color.TypeColor, SimpleNote.Title = txtNote.Text.Length > 40 ? txtNote.Text.Substring(0, 40) : txtNote.Text,
+                        SimpleNote.Textt = txtNote.Text);
+                    }
+                }
             }
             return notesaved;
         }
@@ -92,8 +110,8 @@ namespace SimpleNoteDesk
         private void btnRetrun_Click(object sender, EventArgs e)
         {
             SaveNote();
-            //var frmMain = new FrmMain();
-            //frmMain.ShowDialog();
+            var frmMain = new FrmMain();
+            frmMain.ShowDialog();
             this.Close();
         }
     }
