@@ -40,6 +40,7 @@
             txtNote.ScrollBars = ScrollBars.Horizontal;
             txtNote.Size = new Size(360, 299);
             txtNote.TabIndex = 0;
+            txtNote.TextChanged += FrmNote_Load;
             // 
             // btnRetrun
             // 
@@ -65,11 +66,8 @@
             Controls.Add(txtNote);
             MaximizeBox = false;
             Name = "FrmNote";
-            StartPosition = FormStartPosition.CenterParent;
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "-";
-            Deactivate += FrmNote_Deactivate;
-            FormClosing += FrmNote_FormClosing;
-            FormClosed += FrmNote_FormClosed;
             Load += FrmNote_Load;
             Leave += FrmNote_Leave;
             ResumeLayout(false);

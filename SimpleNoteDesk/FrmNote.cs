@@ -1,4 +1,10 @@
-﻿using System;
+﻿using Aspose.Pdf;
+using Aspose.Pdf.Drawing;
+using Aspose.Pdf.Operators;
+using Microsoft.VisualBasic.ApplicationServices;
+using Org.BouncyCastle.Utilities;
+using SimpleNoteClass;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -7,112 +13,150 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Aspose.Pdf;
-using Aspose.Pdf.Drawing;
-using Org.BouncyCastle.Utilities;
-using SimpleNoteClass;
 
 namespace SimpleNoteDesk
 {
     public partial class FrmNote : Form
     {
-        public static FrmMain DgvNotes { get; set; } = new FrmMain();
         public FrmNote() // Evento new note
         {
             InitializeComponent();
+
         }
-        public FrmNote(FrmMain frmMain) // Evento save note
+        public FrmNote(int id, User user, NoteColor color, string title, string textt) // Evento Open Note
         {
             InitializeComponent();
-            frmMain = new FrmMain();
-            this.FormClosing += FrmNote_FormClosing;
-            this.Deactivate += FrmNote_Deactivate;
-            this.Leave += FrmNote_Leave;
-        }
-        public FrmNote(string textt) // evento edit note
-        {
-            InitializeComponent();
-            txtNote.Text = textt;
+            SimpleNote note = new SimpleNote();
+
+            id = note.Id; // clnIdNote
+            user = Program.LoggedUser; ; // clnUserNote
+            color = note.Color; // clnColorNote
+            title = txtNote.Text.Length > 40 ? txtNote.Text.Substring(0, 40) : txtNote.Text; // clnTitleNote
+            txtNote.Text = textt; // clnTextNote
         }
 
-        private void FrmNote_Load(object sender, EventArgs e) // User Information
+
+        private void FrmNote_Load(object sender, EventArgs e) 
         {
+            // User Information:
+
+            FrmLogin frmLogin = new FrmLogin();
             if (Program.LoggedUser.Id > 0)
             {
                 var loggedUser = Program.LoggedUser;
                 this.Text = $"{loggedUser.Name} - {loggedUser.Level.Name}";
             }
+            else
+            {
+                if (Program.LoggedUser.Id < 1)
+                {
+                    this.Hide();
+                    frmLogin.ShowDialog();
+                }
+                else
+                {
+                    MessageBox.Show("Você precisa estar logado para continuar.", "Login Required", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    Application.Exit();
+                }
+            }
+
+            // Configuração do Formulário:
+            //FrmNote frmNote = new FrmNote(id, userId, colorId, title, textt);
+            //frmMain.dgvNotes.
+
+            //);
         }
 
         public bool SaveNote()
         {
             var notesaved = false;
-            //if (string.IsNullOrWhiteSpace(txtNote.Text))
-            //{
-            //    MessageBox.Show("Não foi possível salvar...", "Erro com o salvamento", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            //    return notesaved;
-            //}
-            //else
-            //{
-            //    var note = new SimpleNote
-            //    {
-            //        User = Program.LoggedUser,
-            //        Color = new NoteColor { Id = 1 }, // Updated to use TypeColor instead of Id
-            //        Title = txtNote.Text.Length > 40 ? txtNote.Text.Substring(0, 40) : txtNote.Text,
-            //        Textt = txtNote.Text
-            //    };
-            //    note.InsertNote();
 
-            //    notesaved = true;
-            //    var frmMain = new FrmMain();
-            //    frmMain.ShowSave("Salvo", 2000);
-            //}
+            var frmMain = new FrmMain();
+            SimpleNote note = new SimpleNote();
 
-            if (txtNote.Text == string.Empty)
+            if (string.IsNullOrWhiteSpace(txtNote.Text))
             {
-                if (txtNote.Text != string.Empty)
-                {
-                    var frmMain = new FrmMain();
-                    int line = 0;
-                    //var insertNote = new SimpleNote(Program.LoggedUser, var color = new NoteColor { Id = 1 }, txtNote.Text.Length > 40 ? txtNote.Text.Substring(0, 40) : txtNote.Text, txtNote.Text);
-                    SimpleNote insertNote = new SimpleNote(SimpleNote.Id = frmMain.dgvNotes.Rows.Add, SimpleNote.User.Id, SimpleNote.Color.TypeColor, SimpleNote.Title = txtNote.Text.Length > 40 ? txtNote.Text.Substring(0, 40) : txtNote.Text,
-                        SimpleNote.Textt = txtNote.Text);
-                    }
-                }
+                MessageBox.Show("Não foi possível salvar...", "Erro com o salvamento", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+                frmMain.ShowSave("NÃO salvo", 5000);
+
+                return notesaved;
+            }
+            else
+            {
+
+                note.InsertNote();
+
+                notesaved = true;
+                frmMain.ShowSave("Salvo", 5000);
             }
             return notesaved;
         }
 
-        private void FrmNote_FormClosed(object sender, FormClosedEventArgs e)
+        public void UpdateNote()
         {
-            SaveNote();
+            var frmMain = new FrmMain();
+            SimpleNote note = new SimpleNote();
+
+            note.Id = Convert.ToInt32(frmMain.dgvNotes.Rows[0].Cells[0].Value); // clnIdNote
+            note.User = Program.LoggedUser; // clnUserNote
+            note.Color.Id = 1; // clnColorNote
+            note.Title = txtNote.Text.Length > 40 ? txtNote.Text.Substring(0, 40) : txtNote.Text; // clnTitleNote
+            note.Textt = txtNote.Text; // clnTextNote
+
+            if (string.IsNullOrWhiteSpace(txtNote.Text))
+            {
+                MessageBox.Show("Não foi possível atualizar...", "Erro com o salvamento", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                frmMain.ShowSave("NÃO Atualizado", 2000);
+            }
+            else
+            {
+                note.UpdateNote();
+                frmMain.ShowSave("Atualizado", 2000);
+            }
+        }
+
+        public void UpdateOrSaveNote()
+        {
+            var frmMain = new FrmMain();
+            SimpleNote note = new SimpleNote();
+            if (Convert.ToInt32(frmMain.dgvNotes.Rows[0].Cells[0].Value) == note.Id) // clnIdNote
+            {
+                SaveNote();
+            }
+            else
+            {
+                UpdateNote();
+            }
+        }
+
+        // Botão Salvar / Voltar:
+        private void btnRetrun_Click(object sender, EventArgs e)
+        {
+            UpdateOrSaveNote();
             this.Close();
         }
 
 
         // Saves Configuration when the form is closing:
+        private void FrmNote_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            UpdateOrSaveNote();
+        }
         private void FrmNote_FormClosing(object sender, FormClosingEventArgs e)
         {
-            SaveNote();
-            this.Close();
+            UpdateOrSaveNote();
         }
 
         private void FrmNote_Deactivate(object sender, EventArgs e)
         {
-            SaveNote();
+            UpdateOrSaveNote();
         }
 
         private void FrmNote_Leave(object sender, EventArgs e)
         {
-            SaveNote();
+            UpdateOrSaveNote();
         }
 
-        private void btnRetrun_Click(object sender, EventArgs e)
-        {
-            SaveNote();
-            var frmMain = new FrmMain();
-            frmMain.ShowDialog();
-            this.Close();
-        }
     }
 }

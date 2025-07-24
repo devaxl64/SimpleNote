@@ -11,8 +11,8 @@ namespace SimpleNoteClass
         public int Id { get; set; }
         public User? User { get; set; }
         public NoteColor? Color { get; set; }
-        public static string? Title { get; set; }
-        public static string? Textt { get; set; }
+        public  string? Title { get; set; }
+        public string? Textt { get; set; }
         public DateTime Datte { get; set; }
         public bool Archived { get; set; }
         public bool Deleted { get; set; }
@@ -31,18 +31,6 @@ namespace SimpleNoteClass
             Textt = textt;
         }
 
-        public SimpleNote(string title, string textt)
-        {
-            Title = title;
-            Textt = textt;
-        }
-
-        public SimpleNote(NoteColor? color, string? title, string? textt)
-        {
-            Color = color;
-            Title = title;
-            Textt = textt;
-        }
         public SimpleNote(int id, User? user, NoteColor? color, string? title, string? textt, DateTime datte, bool archived, bool deleted)
         {
             Id = id;
@@ -65,6 +53,7 @@ namespace SimpleNoteClass
             cmd.Parameters.AddWithValue("sptitle", Title);
             cmd.Parameters.AddWithValue("sptextt", Textt);
         }
+
         public static SimpleNote GetById(int id)
         {
             var note = new SimpleNote();

@@ -4,8 +4,6 @@ namespace SimpleNoteDesk
 {
     public partial class FrmMain : Form
     {
-        public object DataGridView { get; internal set; }
-
         public FrmMain()
         {
             InitializeComponent();
@@ -13,18 +11,19 @@ namespace SimpleNoteDesk
 
         private void FrmMain_Load(object sender, EventArgs e)
         {
-            if (Program.LoggedUser.Id > 0)
+            FrmLogin frmLogin = new FrmLogin();
+            if (Program.LoggedUser.Id <= 0)
             {
-                var loggedUser = Program.LoggedUser;
-                this.Text = $"{loggedUser.Name} - {loggedUser.Level.Name}";
-            }
-            else
-            {
-                if (Program.LoggedUser.Id < 1)
+                // User Login:
+                this.Hide();
+                frmLogin.ShowDialog();
+
+                // User Information:
+                if (Program.LoggedUser.Id >= 1)
                 {
-                    FrmLogin frmLogin = new FrmLogin();
-                    this.Hide();
-                    frmLogin.ShowDialog();
+                    var loggedUser = Program.LoggedUser;
+                    this.Text = $"{loggedUser.Name} - {loggedUser.Level.Name}";
+                    this.Show();
                 }
                 else
                 {
@@ -32,8 +31,16 @@ namespace SimpleNoteDesk
                     Application.Exit();
                 }
             }
-            this.Show();
+            else
+            {
+                MessageBox.Show("Você já estava logado.", "Login já ativo:", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                this.Show();
+            }
             LoadGridNotes();
+
+            // Recarregar Grid sempre que fachado as notas:
+            FrmNote frmNote = new FrmNote();
+            frmNote.FormClosed += (sender, args) => LoadGridNotes();
         }
 
         public void LoadGridNotes()
@@ -46,7 +53,7 @@ namespace SimpleNoteDesk
             {
                 dgvNotes.Rows.Add();
                 dgvNotes.Rows[line].Cells[0].Value = note.Id; // clnIdNote
-                dgvNotes.Rows[line].Cells[1].Value = note.User.Id; // clnUserNote
+                dgvNotes.Rows[line].Cells[1].Value = note.User; // clnUserNote
                 dgvNotes.Rows[line].Cells[2].Value = note.Color.TypeColor; // clnColorNote
                 dgvNotes.Rows[line].Cells[3].Value = note.Title; // clnTitleNote
                 dgvNotes.Rows[line].Cells[4].Value = note.Textt; // clnTextNote
@@ -55,13 +62,17 @@ namespace SimpleNoteDesk
                 dgvNotes.Rows[line].Cells[7].Value = note.Deleted ? "Yes" : "No"; // clnDeletedNote
                 line++;
             }
+            
         }
 
         private void btnNewNote_Click(object sender, EventArgs e)
         {
-            FrmNote frmNote = new FrmNote();
-            frmNote.ShowDialog();
             this.Hide();
+            FrmNote frmNote = new FrmNote();
+
+            frmNote.FormClosed += (sender, args) => this.Show();
+
+            frmNote.Show();
         }
 
         // Mensagem temporária:
@@ -84,17 +95,21 @@ namespace SimpleNoteDesk
 
         private void dgvNotes_CellContentClick(object sender, DataGridViewCellEventArgs e) // Abrir nota já criada.
         {
-            string textt = dgvNotes.Rows[e.RowIndex].Cells[4].Value.ToString();
-            FrmNote frmNote = new FrmNote(textt);
+            int line = dgvNotes.CurrentCell.RowIndex;
+            
+            var noteLine = Convert.ToInt32(dgvNotes.Rows[line].Cells[0].Value);
+            var noteInfoId = SimpleNote.GetById(noteLine);
+            var userLine = Convert.ToInt32(dgvNotes.Rows[line].Cells[1].Value);
+            var user = User.GetById(userLine); // mesmo nome da classe pertencente
+            var colorLine = Convert.ToInt32(dgvNotes.Rows[line].Cells[2].Value);
+            var color = NoteColor.GetById(colorLine); // mesmo nome da classe pertencente
+
+            int id = noteInfoId.Id;
+            string title = noteInfoId.Title;
+            string textt = noteInfoId.Textt;
+            
+            FrmNote frmNote = new FrmNote(id, user, color, title, textt);
             frmNote.ShowDialog();
-            //if (frmNote = )
-            //{
-            this.Hide();
-            //}
-            //else
-            //{
-            //    this.ShowDialog();
-            //}
         }
     }
 }
