@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SimpleNoteClass")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+06c89dc1c7950a287bc238420a5f2612aa9ee968")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+30dbd3ce7fecc31d4ca70baf37f4c2a5039d1f43")]
 [assembly: System.Reflection.AssemblyProductAttribute("SimpleNoteClass")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SimpleNoteClass")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

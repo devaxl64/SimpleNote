@@ -18,21 +18,33 @@ namespace SimpleNoteDesk
 {
     public partial class FrmNote : Form
     {
+        private int NoteId { get; set; }
+        private int UserId { get; set; }
+        private int ColorId { get; set; }
+        private string Textt { get; set; }
+        private string Title { get; set; }
+
+
         public FrmNote() // Evento new note
         {
             InitializeComponent();
 
         }
-        public FrmNote(int id, User user, NoteColor color, string title, string textt) // Evento Open Note
+        public FrmNote(int id, string title, string textt) // Evento Open Note
         {
-            InitializeComponent();
-            SimpleNote note = new SimpleNote();
+            var user = Program.LoggedUser.Id;
+            var note = new SimpleNote();
+            this.ColorId = 1;
+            NoteColor color = NoteColor.GetById(ColorId);
+            note.Id = user;
+            note.Color = color;
 
-            id = note.Id; // clnIdNote
-            user = Program.LoggedUser; ; // clnUserNote
-            color = note.Color; // clnColorNote
-            title = txtNote.Text.Length > 40 ? txtNote.Text.Substring(0, 40) : txtNote.Text; // clnTitleNote
+            InitializeComponent();
+            this.NoteId = id;
+            this.UserId = user;
             txtNote.Text = textt; // clnTextNote
+            title = textt.Length > 40 ? textt.Substring(0, 40) : textt; // clnTitleNote
+            this.Title = title;
         }
 
 
@@ -95,14 +107,30 @@ namespace SimpleNoteDesk
 
         public void UpdateNote()
         {
+            var frmNote = new FrmNote();
             var frmMain = new FrmMain();
-            SimpleNote note = new SimpleNote();
+            //SimpleNote note = new SimpleNote();
+            //note.Id = this.NoteId;
+            //note.User.Id = this.UserId;
+            //note.Color.Id = this.ColorId;
+            //note.Textt = txtNote.Text; // clnTextNote
+            //note.Title = txtNote.Text.Length > 40 ? txtNote.Text.Substring(0, 40) : txtNote.Text; // 
 
-            note.Id = Convert.ToInt32(frmMain.dgvNotes.Rows[0].Cells[0].Value); // clnIdNote
-            note.User = Program.LoggedUser; // clnUserNote
-            note.Color.Id = 1; // clnColorNote
-            note.Title = txtNote.Text.Length > 40 ? txtNote.Text.Substring(0, 40) : txtNote.Text; // clnTitleNote
-            note.Textt = txtNote.Text; // clnTextNote
+            var user = Program.LoggedUser.Id;
+            var note = new SimpleNote();
+            int id;
+
+            this.ColorId = 1;
+            NoteColor color = NoteColor.GetById(ColorId);
+            note.Id = user;
+            note.Color = color;
+
+            InitializeComponent();
+            this.NoteId = id;
+            this.UserId = user;
+            txtNote.Text = textt; // clnTextNote
+            title = textt.Length > 40 ? textt.Substring(0, 40) : textt; // clnTitleNote
+            this.Title = title;
 
             if (string.IsNullOrWhiteSpace(txtNote.Text))
             {

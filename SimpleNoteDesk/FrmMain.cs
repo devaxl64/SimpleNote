@@ -4,6 +4,7 @@ namespace SimpleNoteDesk
 {
     public partial class FrmMain : Form
     {
+        private User UserId { get; set; }
         public FrmMain()
         {
             InitializeComponent();
@@ -96,20 +97,14 @@ namespace SimpleNoteDesk
         private void dgvNotes_CellContentClick(object sender, DataGridViewCellEventArgs e) // Abrir nota já criada.
         {
             int line = dgvNotes.CurrentCell.RowIndex;
-            
-            var noteLine = Convert.ToInt32(dgvNotes.Rows[line].Cells[0].Value);
-            var noteInfoId = SimpleNote.GetById(noteLine);
-            var userLine = Convert.ToInt32(dgvNotes.Rows[line].Cells[1].Value);
-            var user = User.GetById(userLine); // mesmo nome da classe pertencente
-            var colorLine = Convert.ToInt32(dgvNotes.Rows[line].Cells[2].Value);
-            var color = NoteColor.GetById(colorLine); // mesmo nome da classe pertencente
 
-            int id = noteInfoId.Id;
-            string title = noteInfoId.Title;
-            string textt = noteInfoId.Textt;
-            
-            FrmNote frmNote = new FrmNote(id, user, color, title, textt);
-            frmNote.ShowDialog();
+            int id = Convert.ToInt32(dgvNotes.Rows[line].Cells[0].Value);
+            string title = dgvNotes.Rows[line].Cells[3].Value.ToString();
+            string textt = dgvNotes.Rows[line].Cells[4].Value.ToString();
+
+
+            FrmNote frmNote = new FrmNote(id, title, textt);
+            frmNote.Show();
         }
     }
 }
