@@ -1,3 +1,4 @@
+DROP DATABASE IF EXISTS simplenote;
 CREATE DATABASE IF NOT EXISTS simplenote;
 USE simplenote;
 
@@ -81,6 +82,7 @@ VALUES (1, 'Elayne', '', 'elayne@email.com', md5('1234')
 
 DELIMITER $$
 USE simplenote $$
+DROP PROCEDURE IF EXISTS sp_level_insert $$
 CREATE PROCEDURE sp_level_insert (
 spname VARCHAR(25),
 spaka VARCHAR(5)
@@ -94,6 +96,7 @@ DELIMITER ;
 
 DELIMITER $$
 USE  simplenote $$
+DROP PROCEDURE IF EXISTS sp_level_update $$
 CREATE PROCEDURE sp_level_update (
 spid INT,
 spname VARCHAR(25),
@@ -110,6 +113,7 @@ DELIMITER ;
 
 DELIMITER $$
 USE simplenote $$
+DROP PROCEDURE IF EXISTS sp_user_insert $$
 CREATE PROCEDURE sp_user_insert (
 spname VARCHAR(14),
 splastname VARCHAR(14),
@@ -125,6 +129,7 @@ DELIMITER ;
 
 DELIMITER $$
 USE simplenote $$
+DROP PROCEDURE IF EXISTS sp_user_update $$
 CREATE PROCEDURE sp_user_update (
 spid INT,
 spname VARCHAR(14),
@@ -140,6 +145,7 @@ DELIMITER ;
 
 DELIMITER $$
 USE simplenote $$
+DROP PROCEDURE IF EXISTS sp_user_update_name $$
 CREATE PROCEDURE sp_user_update_name (
 spid INT,
 spname VARCHAR(14),
@@ -154,6 +160,7 @@ DELIMITER ;
 
 DELIMITER $$
 USE simplenote $$
+DROP PROCEDURE IF EXISTS sp_user_update_password $$
 CREATE PROCEDURE sp_user_update_password (
 spid INT,
 sppassword VARCHAR(32)
@@ -169,6 +176,7 @@ DELIMITER ;
 ----------------------
 DELIMITER $$
 USE simplenote $$
+DROP PROCEDURE IF EXISTS sp_color_insert $$
 CREATE PROCEDURE sp_color_insert (
 sptypecolor INT,
 spweight INT
@@ -182,6 +190,7 @@ DELIMITER ;
 
 DELIMITER $$
 USE simplenote $$
+DROP PROCEDURE IF EXISTS sp_color_update $$
 CREATE PROCEDURE sp_color_update (
 spid INT,
 sptypecolor INT,
@@ -199,6 +208,7 @@ DELIMITER ;
 ---------------------
 DELIMITER $$
 USE simplenote $$
+DROP PROCEDURE IF EXISTS sp_note_insert $$
 CREATE PROCEDURE sp_note_insert (
 spfk_iduser INT,
 spfk_idcolor INT,
@@ -207,13 +217,14 @@ sptextt TEXT
 )
 BEGIN
 INSERT INTO simplenote.notes (fk_iduser, fk_idcolor, title, textt) 
-VALUES (spfk_iduser, sptitle, sptextt);
+VALUES (spfk_iduser, spfk_idcolor, sptitle, sptextt);
 SELECT * FROM simplenote.colors WHERE id = LAST_INSERT_ID();
 END $$
 DELIMITER ;
 
 DELIMITER $$
 USE simplenote $$
+DROP PROCEDURE IF EXISTS sp_note_update $$
 CREATE PROCEDURE sp_note_update (
 spid INT,
 spfk_iduser INT,
@@ -222,7 +233,11 @@ sptitle VARCHAR(40),
 sptextt TEXT
 )
 BEGIN
-UPDATE simplenote.notes SET spfk_iduser = fk_iduser, spfk_idcolor = fk_idcolor, sptitle = title, sptextt = textt
+UPDATE simplenote.notes SET 
+fk_iduser = spfk_iduser,  
+fk_idcolor = spfk_idcolor, 
+title = sptitle, 
+textt = sptextt
 WHERE id = spid;
 SELECT * FROM simplenote.colors WHERE id = LAST_INSERT_ID();
 END $$

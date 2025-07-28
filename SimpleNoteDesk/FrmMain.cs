@@ -39,9 +39,7 @@ namespace SimpleNoteDesk
             }
             LoadGridNotes();
 
-            // Recarregar Grid sempre que fachado as notas:
-            FrmNote frmNote = new FrmNote();
-            frmNote.FormClosed += (sender, args) => LoadGridNotes();
+
         }
 
         public void LoadGridNotes()
@@ -68,11 +66,9 @@ namespace SimpleNoteDesk
 
         private void btnNewNote_Click(object sender, EventArgs e)
         {
-            this.Hide();
+            // Abrir nova nota:
             FrmNote frmNote = new FrmNote();
-
-            frmNote.FormClosed += (sender, args) => this.Show();
-
+            frmNote.ClickedInSave += LoadGridNotes; // Recarregar Grid sempre que fechado as notas
             frmNote.Show();
         }
 
@@ -102,8 +98,9 @@ namespace SimpleNoteDesk
             string title = dgvNotes.Rows[line].Cells[3].Value.ToString();
             string textt = dgvNotes.Rows[line].Cells[4].Value.ToString();
 
-
             FrmNote frmNote = new FrmNote(id, title, textt);
+
+            frmNote.ClickedInSave += LoadGridNotes; // Recarregar Grid sempre que fechado as notas:
             frmNote.Show();
         }
     }

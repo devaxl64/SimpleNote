@@ -23,36 +23,35 @@ namespace SimpleNoteDesk
         private int ColorId { get; set; }
         private string Textt { get; set; }
         private string Title { get; set; }
+        private int NoteFlag { get; set; }
+        public event Action ClickedInSave;
+
 
 
         public FrmNote() // Evento new note
         {
             InitializeComponent();
-
+            this.UserId = Program.LoggedUser.Id; // clnUserNote
+            this.ColorId = 1;
+            this.NoteFlag = 1; // Noteflag = 1 (New Note)
         }
         public FrmNote(int id, string title, string textt) // Evento Open Note
         {
-            var user = Program.LoggedUser.Id;
-            var note = new SimpleNote();
-            this.ColorId = 1;
-            NoteColor color = NoteColor.GetById(ColorId);
-            note.Id = user;
-            note.Color = color;
-
             InitializeComponent();
-            this.NoteId = id;
-            this.UserId = user;
+            this.NoteId = id; // clnIdNote
+            this.UserId = Program.LoggedUser.Id;  // clnUserNote
+            this.ColorId = 1; // clnColorNote
+            this.Textt = textt; // clnTextNote
+            this.Title = title; // clnTitleNote
+            this.NoteFlag = 0; // Noteflag = 0 (Open Note)
+
             txtNote.Text = textt; // clnTextNote
-            title = textt.Length > 40 ? textt.Substring(0, 40) : textt; // clnTitleNote
-            this.Title = title;
         }
 
 
         private void FrmNote_Load(object sender, EventArgs e) 
         {
             // User Information:
-
-            FrmLogin frmLogin = new FrmLogin();
             if (Program.LoggedUser.Id > 0)
             {
                 var loggedUser = Program.LoggedUser;
@@ -63,6 +62,7 @@ namespace SimpleNoteDesk
                 if (Program.LoggedUser.Id < 1)
                 {
                     this.Hide();
+                    FrmLogin frmLogin = new FrmLogin();
                     frmLogin.ShowDialog();
                 }
                 else
@@ -71,8 +71,9 @@ namespace SimpleNoteDesk
                     Application.Exit();
                 }
             }
-
             // Configuração do Formulário:
+            txtNote.Focus();
+
             //FrmNote frmNote = new FrmNote(id, userId, colorId, title, textt);
             //frmMain.dgvNotes.
 
@@ -85,6 +86,11 @@ namespace SimpleNoteDesk
 
             var frmMain = new FrmMain();
             SimpleNote note = new SimpleNote();
+            note.User.Id = this.UserId;
+            note.Color.Id = this.ColorId;
+            note.Textt = txtNote.Text;
+            note.Title = txtNote.Text.Length > 40 ? txtNote.Text.Substring(0, 40) : txtNote.Text;
+
 
             if (string.IsNullOrWhiteSpace(txtNote.Text))
             {
@@ -96,46 +102,40 @@ namespace SimpleNoteDesk
             }
             else
             {
+                //// DEBUG:
+                //MessageBox.Show($"UserId atual: {Program.LoggedUser.Id}");
+                //MessageBox.Show($"Texto: '{txtNote.Text}'", "DEBUG");
 
+                //MessageBox.Show($"Titulo: '{note.Title}'", "DEBUG");
+                //MessageBox.Show($"Id cor: '{note.Color.Id}'", "DEBUG");
                 note.InsertNote();
 
                 notesaved = true;
                 frmMain.ShowSave("Salvo", 5000);
+                
             }
             return notesaved;
         }
 
         public void UpdateNote()
         {
-            var frmNote = new FrmNote();
             var frmMain = new FrmMain();
-            //SimpleNote note = new SimpleNote();
-            //note.Id = this.NoteId;
-            //note.User.Id = this.UserId;
-            //note.Color.Id = this.ColorId;
-            //note.Textt = txtNote.Text; // clnTextNote
-            //note.Title = txtNote.Text.Length > 40 ? txtNote.Text.Substring(0, 40) : txtNote.Text; // 
 
-            var user = Program.LoggedUser.Id;
-            var note = new SimpleNote();
-            int id;
-
-            this.ColorId = 1;
-            NoteColor color = NoteColor.GetById(ColorId);
-            note.Id = user;
-            note.Color = color;
-
-            InitializeComponent();
-            this.NoteId = id;
-            this.UserId = user;
-            txtNote.Text = textt; // clnTextNote
-            title = textt.Length > 40 ? textt.Substring(0, 40) : textt; // clnTitleNote
-            this.Title = title;
+            SimpleNote note = new SimpleNote();
+            note.Id = this.NoteId;
+            note.User.Id = Program.LoggedUser.Id;
+            note.Color.Id = 1;
+            note.Textt = txtNote.Text; 
+            note.Title = txtNote.Text.Length > 40 ? txtNote.Text.Substring(0, 40) : txtNote.Text;
 
             if (string.IsNullOrWhiteSpace(txtNote.Text))
             {
-                MessageBox.Show("Não foi possível atualizar...", "Erro com o salvamento", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Não foi possível atualizar, texto em branco!", "Erro com o salvamento", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 frmMain.ShowSave("NÃO Atualizado", 2000);
+
+                // DEBUG:
+                //MessageBox.Show($"UserId atual: {Program.LoggedUser.Id}");
+                //MessageBox.Show($"Texto: '{txtNote.Text}'", "DEBUG");
             }
             else
             {
@@ -146,9 +146,7 @@ namespace SimpleNoteDesk
 
         public void UpdateOrSaveNote()
         {
-            var frmMain = new FrmMain();
-            SimpleNote note = new SimpleNote();
-            if (Convert.ToInt32(frmMain.dgvNotes.Rows[0].Cells[0].Value) == note.Id) // clnIdNote
+            if (NoteFlag == 1) // New Note or Open Note
             {
                 SaveNote();
             }
@@ -156,11 +154,13 @@ namespace SimpleNoteDesk
             {
                 UpdateNote();
             }
+            ClickedInSave?.Invoke(); // Recarregar o Grid no FrmMain
         }
 
         // Botão Salvar / Voltar:
         private void btnRetrun_Click(object sender, EventArgs e)
         {
+            this.ActiveControl = null; // Forçar atualização do txtNote.
             UpdateOrSaveNote();
             this.Close();
         }

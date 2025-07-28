@@ -52,6 +52,11 @@ namespace SimpleNoteClass
             cmd.Parameters.AddWithValue("spfk_idcolor", Color.Id);
             cmd.Parameters.AddWithValue("sptitle", Title);
             cmd.Parameters.AddWithValue("sptextt", Textt);
+            Id = Convert.ToInt32(Id);
+            Color.Id = Convert.ToInt32(Color.Id);
+            cmd.ExecuteScalar();
+
+            cmd.Connection.Close();
         }
 
         public static SimpleNote GetById(int id)

@@ -1,1 +1,10 @@
-{"ShowEmptyProjects":false,"CustomColumnOrderings":{},"ShowValidationErrors":true,"SelectedResourceGroupsByProjectFilePath":{"C:\\Users\\marcell.aecastro\\Documents\\SimpleNote\\SimpleNoteDesk\\SimpleNoteDesk.csproj":["C:\\Users\\marcell.aecastro\\Documents\\SimpleNote\\SimpleNoteDesk\\FrmMain.resx"]},"VisibleColumnKeys":["name"]}
+{
+  "ShowEmptyProjects": false,
+  "SelectedGroups": [],
+  "ExpandedProjects": [],
+  "EnableSpellChecker": true,
+  "ColumnOrder": [],
+  "VisibleColumnKeys": [
+    "name"
+  ]
+}
