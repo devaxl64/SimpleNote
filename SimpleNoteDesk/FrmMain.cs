@@ -44,8 +44,9 @@ namespace SimpleNoteDesk
 
         public void LoadGridNotes()
         {
-            //var notes = SimpleNote.GetListByUser(User.GetById); // Assuming User.GetById returns the
-            var notes = SimpleNote.GetList();
+            var userId = Program.LoggedUser.Id;
+
+            var notes = SimpleNote.GetListByUser(userId);
             int line = 0;
             dgvNotes.Rows.Clear();
             foreach (var note in notes)
@@ -61,7 +62,6 @@ namespace SimpleNoteDesk
                 dgvNotes.Rows[line].Cells[7].Value = note.Deleted ? "Yes" : "No"; // clnDeletedNote
                 line++;
             }
-            
         }
 
         private void btnNewNote_Click(object sender, EventArgs e)
