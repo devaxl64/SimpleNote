@@ -63,13 +63,36 @@ namespace SimpleNoteDesk
                 line++;
             }
         }
-
-        private void btnNewNote_Click(object sender, EventArgs e)
+        private void NewNote()
         {
             // Abrir nova nota:
             FrmNote frmNote = new FrmNote();
             frmNote.ClickedInSave += LoadGridNotes; // Recarregar Grid sempre que fechado as notas
             frmNote.Show();
+
+        }
+        private void OpenNote()
+        {
+            int line = dgvNotes.CurrentCell.RowIndex;
+
+            int id = Convert.ToInt32(dgvNotes.Rows[line].Cells[0].Value);
+            string title = dgvNotes.Rows[line].Cells[3].Value.ToString();
+            string textt = dgvNotes.Rows[line].Cells[4].Value.ToString();
+
+            FrmNote frmNote = new FrmNote(id, title, textt);
+
+            frmNote.ClickedInSave += LoadGridNotes; // Recarregar Grid sempre que fechado as notas:
+            frmNote.Show();
+        }
+
+        private void btnNewNote_Click(object sender, EventArgs e)
+        {
+            NewNote();
+        }
+
+        private void dgvNotes_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            OpenNote();
         }
 
         // Mensagem temporária:
@@ -87,21 +110,6 @@ namespace SimpleNoteDesk
                 timer.Dispose();
             };
             timer.Start();
-        }
-
-
-        private void dgvNotes_CellContentClick(object sender, DataGridViewCellEventArgs e) // Abrir nota já criada.
-        {
-            int line = dgvNotes.CurrentCell.RowIndex;
-
-            int id = Convert.ToInt32(dgvNotes.Rows[line].Cells[0].Value);
-            string title = dgvNotes.Rows[line].Cells[3].Value.ToString();
-            string textt = dgvNotes.Rows[line].Cells[4].Value.ToString();
-
-            FrmNote frmNote = new FrmNote(id, title, textt);
-
-            frmNote.ClickedInSave += LoadGridNotes; // Recarregar Grid sempre que fechado as notas:
-            frmNote.Show();
         }
     }
 }

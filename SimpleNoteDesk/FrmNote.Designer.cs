@@ -60,6 +60,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            CancelButton = btnRetrun;
             ClientSize = new Size(384, 361);
             ControlBox = false;
             Controls.Add(btnRetrun);

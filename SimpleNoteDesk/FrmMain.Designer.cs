@@ -87,14 +87,18 @@
             // 
             // dgvNotes
             // 
+            dgvNotes.AllowUserToAddRows = false;
+            dgvNotes.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
             dgvNotes.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvNotes.ColumnHeadersVisible = false;
             dgvNotes.Columns.AddRange(new DataGridViewColumn[] { clnIdNote, clnIdUser, clnIdColor, clnTitleNote, clnTextNote, clnDateNote, clnArchived, clnDeleted });
             dgvNotes.Location = new Point(0, 0);
             dgvNotes.Name = "dgvNotes";
             dgvNotes.RowHeadersVisible = false;
+            dgvNotes.ScrollBars = ScrollBars.Vertical;
             dgvNotes.Size = new Size(360, 337);
             dgvNotes.TabIndex = 2;
-            dgvNotes.CellContentClick += dgvNotes_CellContentClick;
+            dgvNotes.CellClick += dgvNotes_CellClick;
             // 
             // clnIdNote
             // 
@@ -123,6 +127,7 @@
             clnTitleNote.HeaderText = "Title";
             clnTitleNote.Name = "clnTitleNote";
             clnTitleNote.ReadOnly = true;
+            clnTitleNote.Resizable = DataGridViewTriState.False;
             clnTitleNote.Width = 290;
             // 
             // clnTextNote
@@ -130,6 +135,7 @@
             clnTextNote.HeaderText = "Text";
             clnTextNote.Name = "clnTextNote";
             clnTextNote.ReadOnly = true;
+            clnTextNote.Resizable = DataGridViewTriState.False;
             clnTextNote.Visible = false;
             // 
             // clnDateNote
@@ -172,13 +178,13 @@
 
         private Panel panel1;
         private Button btnNewNote;
-        public DataGridView dgvNotes;
         private DataGridViewTextBoxColumn clnId;
         private DataGridViewTextBoxColumn clnColor;
         private DataGridViewTextBoxColumn clnTitle;
         private DataGridViewTextBoxColumn clnDate;
         private DataGridViewTextBoxColumn clnText;
         private TextBox txtNote;
+        private Label lblSave;
         private DataGridViewTextBoxColumn clnIdNote;
         private DataGridViewTextBoxColumn clnIdUser;
         private DataGridViewTextBoxColumn clnIdColor;
@@ -187,6 +193,6 @@
         private DataGridViewTextBoxColumn clnDateNote;
         private DataGridViewTextBoxColumn clnArchived;
         private DataGridViewTextBoxColumn clnDeleted;
-        private Label lblSave;
+        private DataGridView dgvNotes;
     }
 }
