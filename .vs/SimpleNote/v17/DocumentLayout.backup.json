@@ -3,16 +3,24 @@
   "WorkspaceRootPath": "C:\\Users\\Administrador\\Documents\\GitHub\\SimpleNote\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{9A540273-8DD0-4D30-854F-69FAD8D6D596}|SimpleNoteDesk\\SimpleNoteDesk.csproj|C:\\Users\\Administrador\\Documents\\GitHub\\SimpleNote\\simplenotedesk\\frmmain.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{9A540273-8DD0-4D30-854F-69FAD8D6D596}|SimpleNoteDesk\\SimpleNoteDesk.csproj|solutionrelative:simplenotedesk\\frmmain.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{9A540273-8DD0-4D30-854F-69FAD8D6D596}|SimpleNoteDesk\\SimpleNoteDesk.csproj|c:\\users\\administrador\\documents\\github\\simplenote\\simplenotedesk\\frmmain.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{9A540273-8DD0-4D30-854F-69FAD8D6D596}|SimpleNoteDesk\\SimpleNoteDesk.csproj|solutionrelative:simplenotedesk\\frmmain.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{9A540273-8DD0-4D30-854F-69FAD8D6D596}|SimpleNoteDesk\\SimpleNoteDesk.csproj|c:\\users\\administrador\\documents\\github\\simplenote\\simplenotedesk\\frmnote.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{9A540273-8DD0-4D30-854F-69FAD8D6D596}|SimpleNoteDesk\\SimpleNoteDesk.csproj|solutionrelative:simplenotedesk\\frmnote.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{9A540273-8DD0-4D30-854F-69FAD8D6D596}|SimpleNoteDesk\\SimpleNoteDesk.csproj|c:\\users\\administrador\\documents\\github\\simplenote\\simplenotedesk\\frmnote.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9A540273-8DD0-4D30-854F-69FAD8D6D596}|SimpleNoteDesk\\SimpleNoteDesk.csproj|solutionrelative:simplenotedesk\\frmnote.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{9A540273-8DD0-4D30-854F-69FAD8D6D596}|SimpleNoteDesk\\SimpleNoteDesk.csproj|c:\\users\\administrador\\documents\\github\\simplenote\\simplenotedesk\\frmmain.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{9A540273-8DD0-4D30-854F-69FAD8D6D596}|SimpleNoteDesk\\SimpleNoteDesk.csproj|solutionrelative:simplenotedesk\\frmmain.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{067C0BE2-6877-4C52-A9A9-057D305AAD30}|SimpleNoteClass\\SimpleNoteClass.csproj|c:\\users\\administrador\\documents\\github\\simplenote\\simplenoteclass\\simplenote.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{067C0BE2-6877-4C52-A9A9-057D305AAD30}|SimpleNoteClass\\SimpleNoteClass.csproj|solutionrelative:simplenoteclass\\simplenote.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9A540273-8DD0-4D30-854F-69FAD8D6D596}|SimpleNoteDesk\\SimpleNoteDesk.csproj|C:\\Users\\Administrador\\Documents\\GitHub\\SimpleNote\\simplenotedesk\\frmnote.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{9A540273-8DD0-4D30-854F-69FAD8D6D596}|SimpleNoteDesk\\SimpleNoteDesk.csproj|solutionrelative:simplenotedesk\\frmnote.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     }
   ],
   "DocumentGroupContainers": [
@@ -22,7 +30,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 5,
+          "SelectedChildIndex": 6,
           "Children": [
             {
               "$type": "Bookmark",
@@ -43,31 +51,57 @@
             {
               "$type": "Document",
               "DocumentIndex": 2,
+              "Title": "FrmNote.cs",
+              "DocumentMoniker": "C:\\Users\\Administrador\\Documents\\GitHub\\SimpleNote\\SimpleNoteDesk\\FrmNote.cs",
+              "RelativeDocumentMoniker": "SimpleNoteDesk\\FrmNote.cs",
+              "ToolTip": "C:\\Users\\Administrador\\Documents\\GitHub\\SimpleNote\\SimpleNoteDesk\\FrmNote.cs",
+              "RelativeToolTip": "SimpleNoteDesk\\FrmNote.cs",
+              "ViewState": "AgIAAIAAAAAAAAAAAAAtwIMAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-10T16:11:08.529Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "SimpleNote.cs",
+              "DocumentMoniker": "C:\\Users\\Administrador\\Documents\\GitHub\\SimpleNote\\SimpleNoteClass\\SimpleNote.cs",
+              "RelativeDocumentMoniker": "SimpleNoteClass\\SimpleNote.cs",
+              "ToolTip": "C:\\Users\\Administrador\\Documents\\GitHub\\SimpleNote\\SimpleNoteClass\\SimpleNote.cs",
+              "RelativeToolTip": "SimpleNoteClass\\SimpleNote.cs",
+              "ViewState": "AgIAAIUAAAAAAAAAAAAQwIwAAAASAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-10T15:21:09.964Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
               "Title": "FrmMain.cs [Projeto]",
               "DocumentMoniker": "C:\\Users\\Administrador\\Documents\\GitHub\\SimpleNote\\SimpleNoteDesk\\FrmMain.cs",
               "RelativeDocumentMoniker": "SimpleNoteDesk\\FrmMain.cs",
-              "ToolTip": "C:\\Users\\Administrador\\Documents\\GitHub\\SimpleNote\\SimpleNoteDesk\\FrmMain.cs [Projeto]*",
-              "RelativeToolTip": "SimpleNoteDesk\\FrmMain.cs [Projeto]*",
+              "ToolTip": "C:\\Users\\Administrador\\Documents\\GitHub\\SimpleNote\\SimpleNoteDesk\\FrmMain.cs [Projeto]",
+              "RelativeToolTip": "SimpleNoteDesk\\FrmMain.cs [Projeto]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-07-30T03:13:34.076Z",
               "EditorCaption": " [Projeto]"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "FrmMain.cs",
               "DocumentMoniker": "C:\\Users\\Administrador\\Documents\\GitHub\\SimpleNote\\SimpleNoteDesk\\FrmMain.cs",
               "RelativeDocumentMoniker": "SimpleNoteDesk\\FrmMain.cs",
-              "ToolTip": "C:\\Users\\Administrador\\Documents\\GitHub\\SimpleNote\\SimpleNoteDesk\\FrmMain.cs*",
-              "RelativeToolTip": "SimpleNoteDesk\\FrmMain.cs*",
-              "ViewState": "AgIAAC8AAAAAAAAAAAAtwDsAAABSAAAAAAAAAA==",
+              "ToolTip": "C:\\Users\\Administrador\\Documents\\GitHub\\SimpleNote\\SimpleNoteDesk\\FrmMain.cs",
+              "RelativeToolTip": "SimpleNoteDesk\\FrmMain.cs",
+              "ViewState": "AgIAAGgAAAAAAAAAAAAswGwAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-07-30T02:46:21.479Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 4,
               "Title": "FrmNote.cs [Projeto]",
               "DocumentMoniker": "C:\\Users\\Administrador\\Documents\\GitHub\\SimpleNote\\SimpleNoteDesk\\FrmNote.cs",
               "RelativeDocumentMoniker": "SimpleNoteDesk\\FrmNote.cs",

@@ -48,13 +48,16 @@ fk_iduser INT NOT NULL,
 fk_idcolor INT NOT NULL,
 title VARCHAR(40) NOT NULL,
 textt TEXT NOT NULL, -- TEXT: até 65.535 caracteres (64KB) / TINYTEXT: até 255 caracteres.
-datte TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP(),
+datte TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
 archived BIT(1) NOT NULL DEFAULT 0,
 deleted BIT(1) NOT NULL DEFAULT 0,
 PRIMARY KEY (id),
 FOREIGN KEY (fk_iduser) REFERENCES simplenote.users(id),
 FOREIGN KEY (fk_idcolor) REFERENCES simplenote.colors(id)
 );
+
+-- ALTER TABLE notes 
+-- MODIFY datte DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP;
 
 -----------------------
 -- POPULNADO TABELAS --
@@ -242,7 +245,6 @@ WHERE id = spid;
 SELECT * FROM simplenote.colors WHERE id = LAST_INSERT_ID();
 END $$
 DELIMITER ;
-
 
 
 INSERT INTO simplenote.notes (fk_iduser, fk_idcolor, title, textt) 

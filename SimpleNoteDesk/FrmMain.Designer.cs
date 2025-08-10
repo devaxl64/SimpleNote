@@ -93,9 +93,11 @@
             dgvNotes.ColumnHeadersVisible = false;
             dgvNotes.Columns.AddRange(new DataGridViewColumn[] { clnIdNote, clnIdUser, clnIdColor, clnTitleNote, clnTextNote, clnDateNote, clnArchived, clnDeleted });
             dgvNotes.Location = new Point(0, 0);
+            dgvNotes.MultiSelect = false;
             dgvNotes.Name = "dgvNotes";
             dgvNotes.RowHeadersVisible = false;
             dgvNotes.ScrollBars = ScrollBars.Vertical;
+            dgvNotes.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvNotes.Size = new Size(360, 337);
             dgvNotes.TabIndex = 2;
             dgvNotes.CellClick += dgvNotes_CellClick;

@@ -57,9 +57,18 @@ namespace SimpleNoteDesk
                 dgvNotes.Rows[line].Cells[2].Value = note.Color.TypeColor; // clnColorNote
                 dgvNotes.Rows[line].Cells[3].Value = note.Title; // clnTitleNote
                 dgvNotes.Rows[line].Cells[4].Value = note.Textt; // clnTextNote
-                dgvNotes.Rows[line].Cells[5].Value = note.Datte.ToString("dd/MM/yyyy HH:mm:ss"); // clnDateNote
+                dgvNotes.Rows[line].Cells[5].Value = note.Datte;// clnDateNote
                 dgvNotes.Rows[line].Cells[6].Value = note.Archived ? "Yes" : "No"; // clnArchivedNote
                 dgvNotes.Rows[line].Cells[7].Value = note.Deleted ? "Yes" : "No"; // clnDeletedNote
+
+                if (note.Datte.Date == DateTime.Today)
+                {
+                    dgvNotes.Rows[line].Cells[5].Value = note.Datte.ToString("HH:mm");
+                }
+                else
+                {
+                    dgvNotes.Rows[line].Cells[5].Value = note.Datte.ToString("dd/MM/yy");
+                }
                 line++;
             }
         }

@@ -113,7 +113,7 @@ namespace SimpleNoteClass
             List<SimpleNote> notes = new List<SimpleNote>();
             var cmd = Db.OpenDb();
             cmd.CommandType = System.Data.CommandType.Text;
-            cmd.CommandText = $"SELECT * FROM notes WHERE fk_iduser = {user}";
+            cmd.CommandText = $"SELECT * FROM notes WHERE fk_iduser = {user} ORDER BY datte DESC";
             var reader = cmd.ExecuteReader();
             while (reader.Read())
             {
