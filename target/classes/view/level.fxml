@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefWidth="400" prefHeight="300"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="controller.LevelController">
+
+    <Label text="Level"
+           layoutX="30"
+           layoutY="20"/>
+
+    <TextField fx:id="txtLevel"
+               layoutX="30"
+               layoutY="40"
+               prefWidth="200"/>
+
+    <Button text="Salvar"
+            layoutX="30"
+            layoutY="80"
+            onAction="#saveLevel"/>
+
+</AnchorPane>

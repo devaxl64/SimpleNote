@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefWidth="600" prefHeight="400"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="controller.NoteController">
+
+        <Label text="Título"
+               layoutX="30"
+               layoutY="20"/>
+
+        <TextField fx:id="txtTitle"
+                   layoutX="30"
+                   layoutY="40"
+                   prefWidth="300"/>
+
+        <Label text="Conteúdo"
+               layoutX="30"
+               layoutY="80"/>
+
+        <TextArea fx:id="txtContent"
+                  layoutX="30"
+                  layoutY="100"
+                  prefWidth="540"
+                  prefHeight="200"/>
+
+        <Button text="Salvar"
+                layoutX="30"
+                layoutY="320"
+                onAction="#saveNote"/>
+
+</AnchorPane>

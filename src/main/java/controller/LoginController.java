@@ -1,0 +1,20 @@
+package controller;
+
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
+
+public class LoginController {
+
+    @FXML
+    private TextField txtUser;
+
+    @FXML
+    private PasswordField txtPassword;
+
+    @FXML
+    private void btnLoginClick(ActionEvent event) {
+        // mesma lógica do FrmLogin.cs
+    }
+}

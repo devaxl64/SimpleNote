@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane prefWidth="800" prefHeight="600"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="controller.MainController">
+
+        <top>
+                <MenuBar>
+                        <Menu text="Arquivo">
+                                <MenuItem text="Notas" onAction="#openNotes"/>
+                                <MenuItem text="Levels" onAction="#openLevels"/>
+                                <MenuItem text="Sair" onAction="#exit"/>
+                        </Menu>
+                </MenuBar>
+        </top>
+
+        <center>
+                <Label text="Tela Principal"
+                       style="-fx-font-size: 18px;" />
+        </center>
+
+</BorderPane>
